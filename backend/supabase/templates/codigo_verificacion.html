@@ -1,0 +1,14 @@
+<!-- Plantilla "Change Email Address" de Supabase Auth. Copiar este contenido
+     en el panel: Authentication → Email Templates → Change Email Address. -->
+<div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; color: #2F2A24; background: #FAF7F0; padding: 32px 24px; border-radius: 16px;">
+  <h2 style="color: #2F5233; margin: 0 0 12px;">Verifica tu correo en Rebin</h2>
+  <p style="margin: 0 0 20px; line-height: 1.5;">
+    Ingresa este código en la aplicación para vincular <strong>{{ .NewEmail }}</strong> a tu cuenta:
+  </p>
+  <p style="font-size: 32px; font-weight: bold; letter-spacing: 8px; text-align: center; background: #FFFFFF; border: 1px solid #E5DFD3; border-radius: 12px; padding: 16px 0; margin: 0 0 20px; color: #2F5233;">
+    {{ .Token }}
+  </p>
+  <p style="margin: 0; font-size: 13px; color: #6B6358; line-height: 1.5;">
+    El código vence en 15 minutos. Si tú no pediste este código, ignora este correo: nadie podrá usar tu dirección sin él.
+  </p>
+</div>

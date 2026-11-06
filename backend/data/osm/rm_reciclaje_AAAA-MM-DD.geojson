@@ -1,0 +1,4970 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-09-22T08:45:51Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/377903738",
+        "addr:city": "Lo Barnechea",
+        "addr:housenumber": "12099",
+        "addr:street": "Avenida Raúl Labbé",
+        "amenity": "recycling",
+        "building": "yes",
+        "name": "Punto Limpio",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5190951,
+          -33.3685937
+        ]
+      },
+      "id": "way/377903738"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/445825396",
+        "amenity": "recycling",
+        "building": "yes",
+        "source": "Reconocimiento cartográfico 2016 por KG",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5881313,
+          -33.6008439
+        ]
+      },
+      "id": "way/445825396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/446885935",
+        "amenity": "recycling",
+        "building": "yes",
+        "name": "La Casa de Diogenes",
+        "source": "Reconocimiento cartográfico de campo 2016 por KG.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5774892,
+          -33.6139943
+        ]
+      },
+      "id": "way/446885935"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/544370772",
+        "addr:city": "Santiago",
+        "addr:street": "Avenida Presidente Balmaceda",
+        "amenity": "recycling",
+        "name": "Punto Limpio Parque de los Reyes",
+        "nohousenumber": "yes",
+        "opening_hours": "Mo-Su 09:00-17:30",
+        "operator": "Ilustre Municipalidad de Santiago",
+        "operator:type": "public",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling_type": "centre",
+        "start_date": "2019-06",
+        "website": "https://www.munistgo.cl/punto-limpio/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6685732,
+          -33.4283262
+        ]
+      },
+      "id": "way/544370772"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/572484145",
+        "amenity": "recycling",
+        "name": "Planta de Tratamiento de Residuos",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.146883,
+          -33.5242037
+        ]
+      },
+      "id": "way/572484145"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/572488694",
+        "addr:city": "Santa Emilia",
+        "addr:street": "G-744",
+        "amenity": "recycling",
+        "building": "garage",
+        "name": "Punto de reciclaje de vidrio Santa Emilia",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1027144,
+          -33.4676944
+        ]
+      },
+      "id": "way/572488694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/588163135",
+        "amenity": "recycling",
+        "name": "Reciclaje"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4993641,
+          -33.3904764
+        ]
+      },
+      "id": "node/588163135"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/611957126",
+        "amenity": "recycling",
+        "recycling:glass": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3226863,
+          -33.3101243
+        ]
+      },
+      "id": "node/611957126"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/646368338",
+        "addr:city": "La Pintana",
+        "addr:housenumber": "1695",
+        "addr:street": "Tucapel",
+        "amenity": "recycling",
+        "email": "romerelli@romerelli.cl",
+        "name": "Romerelli",
+        "opening_hours": "Mo-Sa 08:00-18:00",
+        "operator": "Romerelli",
+        "phone": "+56227764847",
+        "recycling:aluminium": "yes",
+        "recycling:cans": "yes",
+        "recycling:scrap_metal": "yes",
+        "recycling_type": "centre",
+        "website": "https://www.romerelli.cl/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6566124,
+          -33.5884264
+        ]
+      },
+      "id": "way/646368338"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/647607334",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5918692,
+          -33.4524946
+        ]
+      },
+      "id": "node/647607334"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/732427993",
+        "amenity": "recycling",
+        "operator": "Punto Limpio",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling_type": "container",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7039167,
+          -33.2751327
+        ]
+      },
+      "id": "way/732427993"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/753802999",
+        "amenity": "recycling",
+        "building": "yes",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5553619,
+          -33.5665852
+        ]
+      },
+      "id": "way/753802999"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/753803000",
+        "amenity": "recycling",
+        "building": "yes",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5554239,
+          -33.5665041
+        ]
+      },
+      "id": "way/753803000"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/764468589",
+        "addr:city": "Comuna de Cerrillos",
+        "addr:housenumber": "2701",
+        "addr:street": "Avenida Lo Errázuriz",
+        "amenity": "recycling",
+        "name": "Centro Laboral Oreste Plath",
+        "recycling:aluminium": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:electrical_appliances": "yes",
+        "recycling:glass": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:scrap_metal": "yes",
+        "recycling_type": "centre",
+        "start_date": "2002",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7241949,
+          -33.4833784
+        ]
+      },
+      "id": "way/764468589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/764490043",
+        "addr:city": "Comuna de Cerrillos",
+        "addr:housenumber": "2701",
+        "addr:street": "Avenida Lo Errázuriz",
+        "amenity": "recycling",
+        "name": "Punto Limpio de Cerrillos",
+        "operator": "Gore-Subdere",
+        "operator:type": "government",
+        "recycling_type": "centre",
+        "start_date": "2020",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7241062,
+          -33.4830276
+        ]
+      },
+      "id": "way/764490043"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/766951581",
+        "amenity": "recycling",
+        "name": "Punto Limpio Beauchef",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6616821,
+          -33.4579951
+        ]
+      },
+      "id": "node/766951581"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/915903043",
+        "addr:city": "Pirque",
+        "addr:postcode": "9480000",
+        "addr:street": "Avenida Concha y Toro s/n",
+        "amenity": "recycling",
+        "name": "Punto Limpio Colegio Colonial de Pirque",
+        "note": "Primer punto limpio certificado por el Ministerio de Medio Ambiente, por medio de un Fondo de Protección Ambiental.  más información en: https://colonial.cl/inauguracion-del-nuevo-punto-limpio-del-colegio-colonial-de-pirque/",
+        "opening_hours": "Mo-Fr 08:30-18:00; Sa 08:30-13:00; Su off",
+        "operator": "Colegio Colonial de Pirque",
+        "operator:type": "community",
+        "recycling:aluminium": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "centre",
+        "start_date": "11-05-2018",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5722664,
+          -33.6304569
+        ]
+      },
+      "id": "way/915903043"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/927292092",
+        "amenity": "recycling",
+        "name": "Reciclaje Plaza Santa Ana",
+        "recycling:cans": "yes",
+        "recycling:glass": "yes",
+        "recycling:paper": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6588934,
+          -33.4382291
+        ]
+      },
+      "id": "node/927292092"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/940887820",
+        "amenity": "recycling",
+        "name": "puntolimpio Las Condes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.519282,
+          -33.373619
+        ]
+      },
+      "id": "node/940887820"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/977464975",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling:tetrapak": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6003428,
+          -33.4542838
+        ]
+      },
+      "id": "node/977464975"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/992262400",
+        "addr:city": "Quilicura",
+        "addr:housenumber": "0495",
+        "addr:street": "Costaneras Férreas",
+        "alt_name": "Punto Limpio Costanera Férrea",
+        "amenity": "recycling",
+        "building": "yes",
+        "name": "Punto Limpio Santiago Recicla",
+        "recycling:aluminium_cans": "yes",
+        "recycling:beverage_cartons": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass": "yes",
+        "recycling:pet": "yes",
+        "recycling:white_paper": "yes",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7141382,
+          -33.3547901
+        ]
+      },
+      "id": "way/992262400"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1002764242",
+        "amenity": "recycling",
+        "name": "Estacionamiento Homecenter"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5872933,
+          -33.5095225
+        ]
+      },
+      "id": "node/1002764242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1016730189",
+        "amenity": "recycling",
+        "operator": "Contenedor de reciclaje",
+        "recycling_type": "container",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7086862,
+          -33.5125398
+        ]
+      },
+      "id": "way/1016730189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1033676904",
+        "addr:city": "Las Condes",
+        "addr:housenumber": "11969",
+        "addr:street": "Camino El Alba",
+        "amenity": "recycling",
+        "name": "Jumbo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5147774,
+          -33.4019247
+        ]
+      },
+      "id": "node/1033676904"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1083755069",
+        "amenity": "recycling",
+        "location": "overground",
+        "name": "Reciclaje Jumbo",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5787504,
+          -33.4295788
+        ]
+      },
+      "id": "node/1083755069"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1136607428",
+        "amenity": "recycling",
+        "operator": "Vermicompostaje",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5456025,
+          -33.4637597
+        ]
+      },
+      "id": "way/1136607428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1182933635",
+        "amenity": "recycling",
+        "recycling_type": "container",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7247493,
+          -33.3689356
+        ]
+      },
+      "id": "way/1182933635"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1184574450",
+        "amenity": "recycling",
+        "building": "yes",
+        "name": "Punto limpio",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7313055,
+          -33.2191578
+        ]
+      },
+      "id": "way/1184574450"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1184574451",
+        "amenity": "recycling",
+        "building": "yes",
+        "name": "Punto limpio",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7314542,
+          -33.2190363
+        ]
+      },
+      "id": "way/1184574451"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1193836390",
+        "amenity": "recycling",
+        "building": "yes",
+        "name": "Punto Limpio de Reciclaje - El Mañío",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7419989,
+          -33.3706883
+        ]
+      },
+      "id": "way/1193836390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1240960914",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.578869,
+          -33.6016628
+        ]
+      },
+      "id": "node/1240960914"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1277605850",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottle_caps": "yes",
+        "recycling:plastic_bottles": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7547068,
+          -33.3545364
+        ]
+      },
+      "id": "way/1277605850"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1279965990",
+        "amenity": "recycling",
+        "building": "roof",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5558836,
+          -33.5675313
+        ]
+      },
+      "id": "way/1279965990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1330785467",
+        "addr:city": "Independencia",
+        "addr:street": "Avenida Presidente Eduardo Frei Montalva",
+        "amenity": "recycling",
+        "name": "Punto Limpio Juan Antonio Ríos",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:metal": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6728784,
+          -33.4231431
+        ]
+      },
+      "id": "way/1330785467"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1369080361",
+        "amenity": "recycling",
+        "building": "yes",
+        "recycling_type": "centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5547416,
+          -33.5834876
+        ]
+      },
+      "id": "way/1369080361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1380152463",
+        "amenity": "recycling",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3359783,
+          -33.6505488
+        ]
+      },
+      "id": "way/1380152463"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1380891282",
+        "amenity": "recycling",
+        "name": "zona de compostaje",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6190105,
+          -33.4034398
+        ]
+      },
+      "id": "way/1380891282"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1446418915",
+        "amenity": "recycling",
+        "name": "Punto de Reciclaje",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6129146,
+          -33.4504887
+        ]
+      },
+      "id": "node/1446418915"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909891262",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5887162,
+          -33.4386351
+        ]
+      },
+      "id": "node/1909891262"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909891263",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5859665,
+          -33.4309094
+        ]
+      },
+      "id": "node/1909891263"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909891264",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5926,
+          -33.4368937
+        ]
+      },
+      "id": "node/1909891264"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909891265",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5941262,
+          -33.4324013
+        ]
+      },
+      "id": "node/1909891265"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909894209",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.593996,
+          -33.442983
+        ]
+      },
+      "id": "node/1909894209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909895436",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6001451,
+          -33.4356893
+        ]
+      },
+      "id": "node/1909895436"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909906620",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6077194,
+          -33.4394373
+        ]
+      },
+      "id": "node/1909906620"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909915412",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6211256,
+          -33.4389887
+        ]
+      },
+      "id": "node/1909915412"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909915441",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6116789,
+          -33.4388678
+        ]
+      },
+      "id": "node/1909915441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909915445",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.61501,
+          -33.4464843
+        ]
+      },
+      "id": "node/1909915445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909926842",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6348009,
+          -33.432069
+        ]
+      },
+      "id": "node/1909926842"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909928985",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6275844,
+          -33.4301654
+        ]
+      },
+      "id": "node/1909928985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909930092",
+        "amenity": "recycling",
+        "name": "Parque Balmaceda",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.628617,
+          -33.4345101
+        ]
+      },
+      "id": "node/1909930092"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909930093",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6094233,
+          -33.4320771
+        ]
+      },
+      "id": "node/1909930093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909930094",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6130736,
+          -33.434199
+        ]
+      },
+      "id": "node/1909930094"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1909931037",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.614635,
+          -33.4208605
+        ]
+      },
+      "id": "node/1909931037"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1912904748",
+        "amenity": "recycling",
+        "name": "Universidad Alberto Hurtado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.66211,
+          -33.4448604
+        ]
+      },
+      "id": "node/1912904748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2287552493",
+        "addr:city": "Santiago",
+        "addr:country": "CL",
+        "addr:district": "La Reina",
+        "addr:housenumber": "680",
+        "addr:street": "Jorge Alessandri",
+        "amenity": "recycling",
+        "contact:email": "centroreciclaje@mlareina.cl",
+        "contact:mobile": "+56991989649",
+        "contact:phone": "+562227319 20",
+        "name": "Cooperativa de reciclaje La Reina",
+        "opening_hours": "Mo-Fr 09:00-17:00",
+        "operator": "Cooperativa de recicladores de La Reina",
+        "recycling:batteries": "yes",
+        "recycling:bicycles": "yes",
+        "recycling:cans": "yes",
+        "recycling:cartons": "yes",
+        "recycling:electrical_items": "yes",
+        "recycling:furniture": "yes",
+        "recycling:magazines": "yes",
+        "recycling:newspaper": "yes",
+        "recycling:paper": "yes",
+        "recycling:paper_packaging": "yes",
+        "recycling:scrap_metal": "yes",
+        "recycling:sheet_metal": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5458171,
+          -33.4575421
+        ]
+      },
+      "id": "node/2287552493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2438054698",
+        "amenity": "recycling",
+        "name": "Punto Verde Las Condes",
+        "recycling_type": "centre",
+        "website": "https://www.lascondes.cl/servicios/aseo_mapas_verde.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5802866,
+          -33.404661
+        ]
+      },
+      "id": "node/2438054698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2681439634",
+        "amenity": "recycling",
+        "location": "overground",
+        "name": "Vidrio",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5942807,
+          -33.4274391
+        ]
+      },
+      "id": "node/2681439634"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2801428141",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:clothes": "no",
+        "recycling:glass": "yes",
+        "recycling:paper": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5786879,
+          -33.4423159
+        ]
+      },
+      "id": "node/2801428141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2846088204",
+        "amenity": "recycling",
+        "location": "overground",
+        "recycling_type": "container",
+        "source": "Reconocimiento cartográfico 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.567501,
+          -33.3959181
+        ]
+      },
+      "id": "node/2846088204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3102557500",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5702287,
+          -33.376911
+        ]
+      },
+      "id": "node/3102557500"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714438",
+        "addr:city": "Peñalolen",
+        "addr:street": "Avenida Consistorial",
+        "amenity": "recycling",
+        "name": "Esquina El Solar",
+        "recycling:glass_bottles": "yes",
+        "source": "Reconocimiento cartográfico 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5491706,
+          -33.4871968
+        ]
+      },
+      "id": "node/3200714438"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714439",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Grecia",
+        "amenity": "recycling",
+        "name": "Recinto Municipal",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5417,
+          -33.476995
+        ]
+      },
+      "id": "node/3200714439"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714440",
+        "addr:city": "Lo Espejo",
+        "addr:housenumber": "1410",
+        "addr:street": "Avenida Lincoln",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6735566,
+          -33.514999
+        ]
+      },
+      "id": "node/3200714440"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714441",
+        "addr:city": "Lo Espejo",
+        "addr:housenumber": "1595",
+        "addr:street": "Avenida Adolfo Lopez Mateo",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6792167,
+          -33.5225778
+        ]
+      },
+      "id": "node/3200714441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714442",
+        "addr:city": "Lo Espejo",
+        "addr:housenumber": "2356",
+        "addr:street": "Avenida Lo Ovalle",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6773833,
+          -33.5084944
+        ]
+      },
+      "id": "node/3200714442"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714443",
+        "addr:city": "La Granja",
+        "addr:housenumber": "6711",
+        "addr:street": "Punta Arenas",
+        "amenity": "recycling",
+        "name": "Centro Integral de Reducción de Residuos Sólidos",
+        "operator": "Municipalidad de La Granja",
+        "operator:type": "government",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:metal": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6115475,
+          -33.5184507
+        ]
+      },
+      "id": "node/3200714443"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714444",
+        "addr:city": "Lo Espejo",
+        "addr:housenumber": "7171",
+        "addr:street": "Avenida Valparaíso",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6784528,
+          -33.5165889
+        ]
+      },
+      "id": "node/3200714444"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714445",
+        "addr:city": "Lo Espejo",
+        "addr:housenumber": "8321",
+        "addr:street": "Avenida Central",
+        "amenity": "recycling",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6983778,
+          -33.5228083
+        ]
+      },
+      "id": "node/3200714445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714446",
+        "amenity": "recycling",
+        "location": "overground",
+        "name": "Plaza Cuauhtémoc",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container",
+        "source": "Reconocimiento cartográfico 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5676201,
+          -33.3959752
+        ]
+      },
+      "id": "node/3200714446"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714447",
+        "addr:city": "Peñalolen",
+        "amenity": "recycling",
+        "name": "Punto Limpio Club de Campo Entel",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.574316,
+          -33.499687
+        ]
+      },
+      "id": "node/3200714447"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714448",
+        "addr:city": "Peñalolen",
+        "amenity": "recycling",
+        "name": "Punto Limpio Colegio Pedro de Valdivia",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.576312,
+          -33.491866
+        ]
+      },
+      "id": "node/3200714448"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714449",
+        "amenity": "recycling",
+        "name": "Punto Limpio Colina Centro",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:metal": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6756174,
+          -33.2079833
+        ]
+      },
+      "id": "node/3200714449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714450",
+        "addr:city": "Colina",
+        "addr:housenumber": "14500",
+        "addr:street": "Avenida Paseo Colina Sur",
+        "amenity": "recycling",
+        "location": "overground",
+        "name": "Punto Limpio Piedra Roja",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:metal": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6266196,
+          -33.2768715
+        ]
+      },
+      "id": "node/3200714450"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714451",
+        "addr:city": "Peñalolen",
+        "amenity": "recycling",
+        "name": "Punto Limpio Walmart Quilin",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.579027,
+          -33.486146
+        ]
+      },
+      "id": "node/3200714451"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714453",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "amenity": "recycling",
+        "name": "Punto Tetra Pak - Jardín Infantil Nido de Cóndores",
+        "recycling:cartons": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5637404,
+          -33.470384
+        ]
+      },
+      "id": "node/3200714453"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714454",
+        "addr:city": "Peñalolen",
+        "amenity": "recycling",
+        "name": "Punto Tetra Pak - Parque Vespucio",
+        "recycling:cartons": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.583065,
+          -33.498013
+        ]
+      },
+      "id": "node/3200714454"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714455",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "amenity": "recycling",
+        "name": "Punto Tetra Pak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.568557,
+          -33.468654
+        ]
+      },
+      "id": "node/3200714455"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714456",
+        "addr:city": "Peñalolen",
+        "amenity": "recycling",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.560755,
+          -33.498181
+        ]
+      },
+      "id": "node/3200714456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714457",
+        "addr:city": "Peñalolen",
+        "addr:street": "Los Presidentes",
+        "amenity": "recycling",
+        "location": "overground",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.557037,
+          -33.486771
+        ]
+      },
+      "id": "node/3200714457"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714458",
+        "addr:city": "Vitacura",
+        "addr:street": "Avenida Santa María",
+        "amenity": "recycling",
+        "nohousenumber": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5721546,
+          -33.3777494
+        ]
+      },
+      "id": "node/3200714458"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714459",
+        "addr:city": "Vitacura",
+        "addr:street": "Costanera Sur San Josemaría Escrivá de Balaguer",
+        "amenity": "recycling",
+        "location": "overground",
+        "nohousenumber": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5721682,
+          -33.3794056
+        ]
+      },
+      "id": "node/3200714459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200714460",
+        "amenity": "recycling",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.600808,
+          -33.386882
+        ]
+      },
+      "id": "node/3200714460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715961",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Talinay",
+        "amenity": "recycling",
+        "nohousenumber": "yes",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5318189,
+          -33.4590232
+        ]
+      },
+      "id": "node/3200715961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715962",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Orientales",
+        "amenity": "recycling",
+        "nohousenumber": "yes",
+        "recycling:aluminium": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.558662,
+          -33.466962
+        ]
+      },
+      "id": "node/3200715962"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715963",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Orientales",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.553083,
+          -33.469182
+        ]
+      },
+      "id": "node/3200715963"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715964",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Grecia",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.575142,
+          -33.469683
+        ]
+      },
+      "id": "node/3200715964"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715965",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Grecia",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.57158,
+          -33.47022
+        ]
+      },
+      "id": "node/3200715965"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715966",
+        "addr:city": "Peñalolén",
+        "addr:country": "CL",
+        "addr:street": "Avenida Grecia",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5439302,
+          -33.4759897
+        ]
+      },
+      "id": "node/3200715966"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715967",
+        "addr:city": "Peñalolen",
+        "addr:street": "El Duraznal",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5658642,
+          -33.4779299
+        ]
+      },
+      "id": "node/3200715967"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715968",
+        "addr:city": "Peñalolen",
+        "addr:street": "Tobalaba",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5581129,
+          -33.48173
+        ]
+      },
+      "id": "node/3200715968"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715970",
+        "addr:city": "Peñalolen",
+        "addr:street": "Antupiren",
+        "amenity": "recycling",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.534546,
+          -33.483321
+        ]
+      },
+      "id": "node/3200715970"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715971",
+        "addr:city": "Peñalolen",
+        "addr:housenumber": "13949",
+        "addr:street": "Avenida Tobalaba",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "source": "Reconocimiento cartográfico 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5612414,
+          -33.5035563
+        ]
+      },
+      "id": "node/3200715971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715973",
+        "addr:city": "Peñalolen",
+        "addr:street": "Avenida San Luis de Macul",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "source": "Reconocimiento cartográfico 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5785682,
+          -33.5061878
+        ]
+      },
+      "id": "node/3200715973"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715974",
+        "addr:city": "Peñalolen",
+        "addr:street": "Avenida San Luis de Macul",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "source": "Reconocimiento cartográfico 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5786735,
+          -33.5061752
+        ]
+      },
+      "id": "node/3200715974"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3200715976",
+        "addr:city": "Lo Espejo",
+        "addr:street": "Avenida José Joaquin Prieto",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6713379,
+          -33.5099849
+        ]
+      },
+      "id": "node/3200715976"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3676456357",
+        "addr:city": "Pedro Aguirre Cerda",
+        "addr:housenumber": "2500",
+        "addr:street": "Avenida La Marina",
+        "amenity": "recycling",
+        "name": "Punto de Reciclaje",
+        "operator": "EMERES",
+        "phone": "+56225588960",
+        "recycling:clothes": "no",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "source": "http://www.directorioresiduos.cl/",
+        "website": "http://www.directorioresiduos.cl/",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6704699,
+          -33.4925517
+        ]
+      },
+      "id": "node/3676456357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3676456359",
+        "addr:street": "centroamérica",
+        "amenity": "recycling",
+        "name": "Punto de Reciclaje",
+        "operator": "EMERES",
+        "phone": "(+56 2) 2 558 8960",
+        "recycling:cans": "yes",
+        "recycling:clothes": "no",
+        "recycling:glass": "yes",
+        "recycling:paper": "yes",
+        "source": "http://www.directorioresiduos.cl/",
+        "website": "http://www.directorioresiduos.cl/",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6840687,
+          -33.4939142
+        ]
+      },
+      "id": "node/3676456359"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3677018129",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.8300818,
+          -33.5601613
+        ]
+      },
+      "id": "node/3677018129"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4404203761",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5524863,
+          -33.4226202
+        ]
+      },
+      "id": "node/4404203761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4442510605",
+        "addr:housenumber": "2986",
+        "addr:street": "Bravo de Saravia",
+        "amenity": "recycling",
+        "name": "Soco Metal",
+        "recycling_type": "scrap metal",
+        "source": "Reconocimiento cartográfico de campo 2016 por KG."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.683162,
+          -33.4045359
+        ]
+      },
+      "id": "node/4442510605"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4472169494",
+        "amenity": "recycling",
+        "name": "Recupack",
+        "name:es": "Recupack"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6196986,
+          -33.5847759
+        ]
+      },
+      "id": "node/4472169494"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4776056321",
+        "amenity": "recycling",
+        "name": "Sca Chile",
+        "website": "www sacchile.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.747283,
+          -33.2626848
+        ]
+      },
+      "id": "node/4776056321"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4981116088",
+        "amenity": "recycling",
+        "name": "Punto de Reciclaje",
+        "operator": "EMERES",
+        "phone": "(+56 2) 2 558 8960",
+        "recycling:clothes": "no",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "source": "http://www.directorioresiduos.cl/",
+        "website": "http://www.directorioresiduos.cl/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6721238,
+          -33.4855281
+        ]
+      },
+      "id": "node/4981116088"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5132060023",
+        "amenity": "recycling",
+        "name": "Punto Limpio",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.54638,
+          -33.4661969
+        ]
+      },
+      "id": "node/5132060023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5280506009",
+        "amenity": "recycling",
+        "name": "Centro de Reciclaje Los Aromos",
+        "operator": "Villa Los Aromos",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6041645,
+          -33.5726634
+        ]
+      },
+      "id": "node/5280506009"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5325445469",
+        "amenity": "recycling",
+        "name": "Punto Reciclaje"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.571643,
+          -33.4029564
+        ]
+      },
+      "id": "node/5325445469"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5399314406",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.724716,
+          -33.1979593
+        ]
+      },
+      "id": "node/5399314406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5446265032",
+        "addr:city": "Recoleta",
+        "addr:street": "Loreto",
+        "amenity": "recycling",
+        "collection_times": "Mo-Th 11:00-20:00; Fr 11:00-19:00; Sa 10:00-14:00",
+        "name": "Punto Limpio Loreto",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container",
+        "start_date": "2018-02-23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6423768,
+          -33.4339155
+        ]
+      },
+      "id": "node/5446265032"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5499521980",
+        "amenity": "recycling",
+        "name": "Reciclaje vidrios",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1186453,
+          -33.5161082
+        ]
+      },
+      "id": "node/5499521980"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5523236716",
+        "amenity": "recycling",
+        "location": "overground",
+        "name": "Punto Limpio UNAB",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6670225,
+          -33.4537626
+        ]
+      },
+      "id": "node/5523236716"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5528165703",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3174039,
+          -33.7285899
+        ]
+      },
+      "id": "node/5528165703"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5544242466",
+        "amenity": "recycling",
+        "recycling:bottles": "yes",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5799829,
+          -33.4811985
+        ]
+      },
+      "id": "node/5544242466"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5802428493",
+        "amenity": "recycling",
+        "check_date:recycling": "2025-04-14",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6170016,
+          -33.4482246
+        ]
+      },
+      "id": "node/5802428493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5880053275",
+        "addr:housenumber": "2500",
+        "addr:street": "Avenida La Marina",
+        "amenity": "recycling",
+        "name": "Punto de Reciclaje",
+        "operator": "EMERES",
+        "phone": "(+56 2) 2 558 8960",
+        "recycling:clothes": "no",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "source": "http://www.directorioresiduos.cl/",
+        "website": "http://www.directorioresiduos.cl/",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6675322,
+          -33.4964337
+        ]
+      },
+      "id": "node/5880053275"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5880053276",
+        "addr:city": "Pedro Aguirre Cerda",
+        "addr:housenumber": "2500",
+        "addr:street": "Tongoy",
+        "amenity": "recycling",
+        "name": "Punto de Reciclaje",
+        "operator": "EMERES",
+        "phone": "+56225588960",
+        "recycling:clothes": "no",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "source": "http://www.directorioresiduos.cl/",
+        "website": "http://www.directorioresiduos.cl/",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6793569,
+          -33.4988035
+        ]
+      },
+      "id": "node/5880053276"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5975047785",
+        "addr:city": "El Bosque",
+        "addr:country": "CL",
+        "addr:housenumber": "555",
+        "addr:postcode": "8012117",
+        "addr:street": "Augusto d'Halmar",
+        "amenity": "recycling",
+        "name": "Punto Verde CESFAM",
+        "opening_hours": "Mo-Fr 07:30-20:00; Sa 08:00-12:00",
+        "operator": "Municipalidad de El Bosque",
+        "operator:type": "public",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6743621,
+          -33.5610984
+        ]
+      },
+      "id": "node/5975047785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5980616191",
+        "amenity": "recycling",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6124978,
+          -33.4385556
+        ]
+      },
+      "id": "node/5980616191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6067180555",
+        "addr:city": "Estación Central",
+        "addr:housenumber": "4169",
+        "addr:street": "Arzobispo Subercaseaux",
+        "amenity": "recycling",
+        "building": "commercial",
+        "email": "romerelli@romerelli.cl",
+        "name": "Romerelli",
+        "opening_hours": "Mo-Fr 08:30-17:45",
+        "phone": "+56227764847",
+        "recycling:aluminium": "yes",
+        "recycling:cans": "yes",
+        "recycling:scrap_metal": "yes",
+        "recycling_type": "centre",
+        "website": "https://www.romerelli.cl/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6908863,
+          -33.4662427
+        ]
+      },
+      "id": "node/6067180555"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6079749486",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6949393,
+          -33.4437563
+        ]
+      },
+      "id": "node/6079749486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6201401085",
+        "amenity": "recycling",
+        "name": "Local de compra de aluminio y otros metales"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.673499,
+          -33.4638172
+        ]
+      },
+      "id": "node/6201401085"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6245509259",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6840075,
+          -33.4479099
+        ]
+      },
+      "id": "node/6245509259"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6279081237",
+        "addr:city": "Maipú",
+        "addr:housenumber": "640",
+        "addr:street": "Los Yacimientos",
+        "amenity": "recycling",
+        "building": "industrial",
+        "name": "Romerelli",
+        "operator": "Romerelli",
+        "recycling:aluminium": "yes",
+        "recycling:cans": "yes",
+        "recycling:scrap_metal": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7405388,
+          -33.527198
+        ]
+      },
+      "id": "node/6279081237"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6311524264",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7689518,
+          -33.5451326
+        ]
+      },
+      "id": "node/6311524264"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6311524268",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7666655,
+          -33.5419746
+        ]
+      },
+      "id": "node/6311524268"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6312736555",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7677315,
+          -33.5522633
+        ]
+      },
+      "id": "node/6312736555"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6319305785",
+        "amenity": "recycling",
+        "name": "Punto limpio",
+        "name:fr": "Lieu de recyclage"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6165456,
+          -33.3893147
+        ]
+      },
+      "id": "node/6319305785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6329327785",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6014757,
+          -33.3864137
+        ]
+      },
+      "id": "node/6329327785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6446790110",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6351028,
+          -33.4459954
+        ]
+      },
+      "id": "node/6446790110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6810301283",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6321189,
+          -33.4242997
+        ]
+      },
+      "id": "node/6810301283"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6878440164",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.702699,
+          -33.2752157
+        ]
+      },
+      "id": "node/6878440164"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6938501882",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6101531,
+          -33.3765876
+        ]
+      },
+      "id": "node/6938501882"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6938501888",
+        "amenity": "recycling",
+        "name": "Centro de Reciclaje",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6087663,
+          -33.3762584
+        ]
+      },
+      "id": "node/6938501888"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6938502014",
+        "amenity": "recycling",
+        "name": "Estación Vermicompostaje",
+        "operator": "Parquemet",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6080357,
+          -33.3739507
+        ]
+      },
+      "id": "node/6938502014"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7387784957",
+        "amenity": "recycling",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5180807,
+          -33.4930488
+        ]
+      },
+      "id": "node/7387784957"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7847866669",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3329,
+          -33.3378585
+        ]
+      },
+      "id": "node/7847866669"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8132494049",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7676356,
+          -33.4898506
+        ]
+      },
+      "id": "node/8132494049"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8156504564",
+        "amenity": "recycling",
+        "ele": "1024",
+        "operator": "Municipalidad",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5083307,
+          -33.5002172
+        ]
+      },
+      "id": "node/8156504564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8170960779",
+        "amenity": "recycling",
+        "operator": "Comunidad",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3702288,
+          -33.6843127
+        ]
+      },
+      "id": "node/8170960779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8315682248",
+        "amenity": "recycling",
+        "indoor": "no",
+        "opening_hours": "24/7",
+        "recycling:PET": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.9020981,
+          -33.7539341
+        ]
+      },
+      "id": "node/8315682248"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8356435958",
+        "amenity": "recycling",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6321207,
+          -33.4230776
+        ]
+      },
+      "id": "node/8356435958"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8423238282",
+        "amenity": "recycling",
+        "operator": "Municipal",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7687803,
+          -33.4852533
+        ]
+      },
+      "id": "node/8423238282"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8608480309",
+        "amenity": "recycling",
+        "operator": "PMS",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6333407,
+          -33.4195804
+        ]
+      },
+      "id": "node/8608480309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8822626511",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6544705,
+          -33.4898296
+        ]
+      },
+      "id": "node/8822626511"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8822626512",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6549558,
+          -33.4897221
+        ]
+      },
+      "id": "node/8822626512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8822626515",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.65399,
+          -33.4882398
+        ]
+      },
+      "id": "node/8822626515"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8822626516",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6544468,
+          -33.4881408
+        ]
+      },
+      "id": "node/8822626516"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8833203111",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6580043,
+          -33.4857832
+        ]
+      },
+      "id": "node/8833203111"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8957868716",
+        "addr:housenumber": "581",
+        "addr:street": "Manuel Antonio Matta",
+        "amenity": "recycling",
+        "name": "Punto Limpio TriCiclos",
+        "recycling:PET": "yes",
+        "recycling:aluminium": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:drink_cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:newspaper": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bags": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7272161,
+          -33.3675397
+        ]
+      },
+      "id": "node/8957868716"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9027308887",
+        "addr:city": "Vitacura",
+        "addr:street": "Costanera Sur",
+        "amenity": "recycling",
+        "name": "Punto Limpio",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.599653,
+          -33.391676
+        ]
+      },
+      "id": "node/9027308887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9152559262",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7695486,
+          -33.4864178
+        ]
+      },
+      "id": "node/9152559262"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10093522640",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6979091,
+          -33.4125738
+        ]
+      },
+      "id": "node/10093522640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10102270873",
+        "amenity": "recycling",
+        "name": "Punto Limpio",
+        "operator": "Ilustre Municipalidad de Calera de Tango",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7610896,
+          -33.63101
+        ]
+      },
+      "id": "node/10102270873"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10220188623",
+        "amenity": "recycling",
+        "opening_hours": "Mo-Fr 08:30-20:00",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.9065521,
+          -33.7510057
+        ]
+      },
+      "id": "node/10220188623"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10220192456",
+        "amenity": "recycling",
+        "opening_hours": "Mo-Fr 08:30-17:30",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.8974364,
+          -33.7554522
+        ]
+      },
+      "id": "node/10220192456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10647331983",
+        "addr:city": "El Bosque",
+        "addr:street": "Portales",
+        "amenity": "recycling",
+        "name": "Punto Verde Los Sauces",
+        "opening_hours": "Mo-Sa 08:00-13:30",
+        "operator": "Municipalidad de El Bosque",
+        "operator:type": "public",
+        "recycling:batteries": "yes",
+        "recycling:bottle_return": "yes",
+        "recycling:cans": "yes",
+        "recycling:capses": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cooking_oil": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6633061,
+          -33.5627435
+        ]
+      },
+      "id": "node/10647331983"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10647349900",
+        "addr:city": "El Bosque",
+        "addr:housenumber": "550",
+        "addr:street": "Javiera Carrera",
+        "amenity": "recycling",
+        "name": "Punto Verde",
+        "opening_hours": "Mo-Fr 08:00-14:00",
+        "operator": "Municipalidad de El Bosque",
+        "operator:type": "public",
+        "recycling:batteries": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cooking_oil": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6644432,
+          -33.5573972
+        ]
+      },
+      "id": "node/10647349900"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10647349902",
+        "addr:city": "El Bosque",
+        "addr:country": "CL",
+        "addr:housenumber": "286",
+        "addr:street": "General Korner",
+        "amenity": "recycling",
+        "name": "Punto Verde OMIL",
+        "opening_hours": "Mo-Fr 08:30-20:00",
+        "operator": "Municipalidad de El Bosque",
+        "operator:type": "public",
+        "recycling:batteries": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cooking_oil": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6768672,
+          -33.5504277
+        ]
+      },
+      "id": "node/10647349902"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10647349904",
+        "addr:city": "El Bosque",
+        "addr:street": "Avenida Padre Hurtado",
+        "amenity": "recycling",
+        "opening_hours": "Mo-Fr 08:00-20:00",
+        "operator": "Municipalidad de El Bosque",
+        "operator:type": "public",
+        "recycling:batteries": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cooking_oil": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6666426,
+          -33.546813
+        ]
+      },
+      "id": "node/10647349904"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10671839956",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5644715,
+          -33.4447086
+        ]
+      },
+      "id": "node/10671839956"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10671839957",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5656091,
+          -33.4445667
+        ]
+      },
+      "id": "node/10671839957"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10696045383",
+        "amenity": "recycling",
+        "name": "Compostaje Winkelhue",
+        "operator": "Winkelhue",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.630249,
+          -33.4139773
+        ]
+      },
+      "id": "node/10696045383"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10735948574",
+        "amenity": "recycling",
+        "operator": "ParqueMet",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6300264,
+          -33.5902541
+        ]
+      },
+      "id": "node/10735948574"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10735948582",
+        "amenity": "recycling",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6291171,
+          -33.5882924
+        ]
+      },
+      "id": "node/10735948582"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10772181280",
+        "amenity": "recycling",
+        "building": "house",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6031161,
+          -33.4773267
+        ]
+      },
+      "id": "node/10772181280"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10823517336",
+        "access": "yes",
+        "addr:city": "Macul",
+        "addr:street": "Poeta Augusto Winter",
+        "amenity": "recycling",
+        "building": "house",
+        "name": "Punto Limpio - Villa Macul",
+        "opening_hours": "Mo-Fr 10:00-20:00 / Sa 10:00-19:00",
+        "operator": "I. Municipalidad de Macul",
+        "operator:type": "public",
+        "panoramax": "1feed8cd-f8f8-48cc-8b56-891a3f9076d9",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5936309,
+          -33.491165
+        ]
+      },
+      "id": "node/10823517336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10823517345",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "I. Municipalidad de Macul",
+        "panoramax": "ffe4535b-aab2-4366-90d1-14022ed31557",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5926988,
+          -33.4901786
+        ]
+      },
+      "id": "node/10823517345"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10828132572",
+        "addr:city": "Macul",
+        "amenity": "recycling",
+        "name": "Punto Limpio Triciclos",
+        "operator": "Triciclos",
+        "operator:type": "private",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6081851,
+          -33.49793
+        ]
+      },
+      "id": "node/10828132572"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10841434559",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6080399,
+          -33.4952823
+        ]
+      },
+      "id": "node/10841434559"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11054163397",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5762928,
+          -33.4039163
+        ]
+      },
+      "id": "node/11054163397"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11141639522",
+        "amenity": "recycling",
+        "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-14:00; Su,PH off",
+        "operator": "Municipalidad de Pedro Aguirre Cerda",
+        "recycling:PET": "yes",
+        "recycling:beverage_cartons": "yes",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6639695,
+          -33.4877434
+        ]
+      },
+      "id": "node/11141639522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11180295778",
+        "amenity": "recycling",
+        "name": "área de compostaje",
+        "operator": "ParqueMet",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7203632,
+          -33.4109142
+        ]
+      },
+      "id": "node/11180295778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11260334119",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6346413,
+          -33.4320558
+        ]
+      },
+      "id": "node/11260334119"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11359040202",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7153034,
+          -33.4290867
+        ]
+      },
+      "id": "node/11359040202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11359040206",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7161416,
+          -33.4294885
+        ]
+      },
+      "id": "node/11359040206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11376993927",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6032141,
+          -33.4237146
+        ]
+      },
+      "id": "node/11376993927"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11376993928",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6030101,
+          -33.4240107
+        ]
+      },
+      "id": "node/11376993928"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11383043117",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6032579,
+          -33.4241254
+        ]
+      },
+      "id": "node/11383043117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11419358227",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.518457,
+          -33.4335228
+        ]
+      },
+      "id": "node/11419358227"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11618697030",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7546945,
+          -33.4961549
+        ]
+      },
+      "id": "node/11618697030"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11618697031",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7546996,
+          -33.4961426
+        ]
+      },
+      "id": "node/11618697031"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11819512529",
+        "amenity": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2564203,
+          -33.5035625
+        ]
+      },
+      "id": "node/11819512529"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11826304984",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6132731,
+          -33.4975287
+        ]
+      },
+      "id": "node/11826304984"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11826304997",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6137488,
+          -33.4975838
+        ]
+      },
+      "id": "node/11826304997"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11829371760",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6130683,
+          -33.4665481
+        ]
+      },
+      "id": "node/11829371760"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11860250103",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7547016,
+          -33.3546598
+        ]
+      },
+      "id": "node/11860250103"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11860250104",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7547049,
+          -33.3546661
+        ]
+      },
+      "id": "node/11860250104"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11921451406",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5098283,
+          -33.4649859
+        ]
+      },
+      "id": "node/11921451406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11921451423",
+        "amenity": "recycling",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5106943,
+          -33.4648009
+        ]
+      },
+      "id": "node/11921451423"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11953285259",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6146813,
+          -33.6305113
+        ]
+      },
+      "id": "node/11953285259"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11969546888",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:plastic": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6221332,
+          -33.6133535
+        ]
+      },
+      "id": "node/11969546888"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12003252949",
+        "amenity": "recycling",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.620838,
+          -33.6136593
+        ]
+      },
+      "id": "node/12003252949"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12003341309",
+        "amenity": "recycling",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6257394,
+          -33.6129574
+        ]
+      },
+      "id": "node/12003341309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12003357393",
+        "amenity": "recycling",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6190453,
+          -33.6150996
+        ]
+      },
+      "id": "node/12003357393"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12109244665",
+        "amenity": "recycling",
+        "operator": "ParqueMet",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:green_waste": "yes",
+        "recycling:paper": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6360628,
+          -33.4302598
+        ]
+      },
+      "id": "node/12109244665"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12115910299",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6016716,
+          -33.3897206
+        ]
+      },
+      "id": "node/12115910299"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12138221240",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6130212,
+          -33.4623826
+        ]
+      },
+      "id": "node/12138221240"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12138221243",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6141901,
+          -33.462303
+        ]
+      },
+      "id": "node/12138221243"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12138221268",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.611102,
+          -33.46611
+        ]
+      },
+      "id": "node/12138221268"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12138221269",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6116759,
+          -33.4635209
+        ]
+      },
+      "id": "node/12138221269"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12138221286",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6135924,
+          -33.4626275
+        ]
+      },
+      "id": "node/12138221286"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12138726303",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6099577,
+          -33.4632929
+        ]
+      },
+      "id": "node/12138726303"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12147127158",
+        "amenity": "recycling",
+        "name": "Centro de Reciclaje",
+        "operator": "Rendering",
+        "operator:type": "private",
+        "recycling:cardboard": "yes",
+        "recycling:cooking_oil": "yes",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5488851,
+          -33.4068355
+        ]
+      },
+      "id": "node/12147127158"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12181228564",
+        "amenity": "recycling",
+        "recycling:PET": "yes",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6072534,
+          -33.3956014
+        ]
+      },
+      "id": "node/12181228564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12181228599",
+        "amenity": "recycling",
+        "recycling:PET": "yes",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6115288,
+          -33.4072752
+        ]
+      },
+      "id": "node/12181228599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12236453927",
+        "amenity": "recycling",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6392951,
+          -33.418756
+        ]
+      },
+      "id": "node/12236453927"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12237124220",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6396349,
+          -33.381769
+        ]
+      },
+      "id": "node/12237124220"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12287275094",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.9527845,
+          -33.6751152
+        ]
+      },
+      "id": "node/12287275094"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12287330568",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.9164281,
+          -33.7274003
+        ]
+      },
+      "id": "node/12287330568"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12289149977",
+        "amenity": "recycling",
+        "name": "bioresiduos",
+        "operator": "Parquemet",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7055831,
+          -33.5004956
+        ]
+      },
+      "id": "node/12289149977"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12289364709",
+        "amenity": "recycling",
+        "operator": "Parquemet",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.699748,
+          -33.4960103
+        ]
+      },
+      "id": "node/12289364709"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12289364713",
+        "amenity": "recycling",
+        "operator": "Parquemet",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.697433,
+          -33.490587
+        ]
+      },
+      "id": "node/12289364713"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12289364719",
+        "amenity": "recycling",
+        "operator": "Parquemet",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6924467,
+          -33.486648
+        ]
+      },
+      "id": "node/12289364719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12333464357",
+        "amenity": "recycling",
+        "recycling:PET": "yes",
+        "recycling:beverage_cartons": "no",
+        "recycling:cans": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "no",
+        "recycling:plastic_bottles": "no",
+        "recycling:plastic_packaging": "no",
+        "recycling:small_electrical_appliances": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7506965,
+          -33.4366988
+        ]
+      },
+      "id": "node/12333464357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12333930177",
+        "amenity": "recycling",
+        "recycling:paper": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.753773,
+          -33.4411545
+        ]
+      },
+      "id": "node/12333930177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12334612528",
+        "amenity": "recycling",
+        "recycling:beverage_cartons": "yes",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "no",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "no",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6608872,
+          -33.4524839
+        ]
+      },
+      "id": "node/12334612528"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12334624254",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.660164,
+          -33.4501962
+        ]
+      },
+      "id": "node/12334624254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12374853548",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.746952,
+          -33.441892
+        ]
+      },
+      "id": "node/12374853548"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12384861123",
+        "amenity": "recycling",
+        "operator": "Sub Dirección de Medioambiente Municipalidad de Santiago",
+        "recycling:cans": "yes",
+        "recycling:cartons": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:pet_drink_bottles": "yes",
+        "recycling:tetrapak": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6625216,
+          -33.4640096
+        ]
+      },
+      "id": "node/12384861123"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12384861127",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:glass": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.663938,
+          -33.4625616
+        ]
+      },
+      "id": "node/12384861127"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12427684617",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6115813,
+          -33.469313
+        ]
+      },
+      "id": "node/12427684617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12549271020",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.634117,
+          -33.4669447
+        ]
+      },
+      "id": "node/12549271020"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12673116115",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6768383,
+          -33.5537372
+        ]
+      },
+      "id": "node/12673116115"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12674219889",
+        "amenity": "recycling",
+        "name": "zona de compostaje",
+        "operator": "Parquemet",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7639314,
+          -33.4143045
+        ]
+      },
+      "id": "node/12674219889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12674219909",
+        "amenity": "recycling",
+        "name": "zona de compostaje",
+        "operator": "Parquemet",
+        "recycling:green_waste": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7480778,
+          -33.4127102
+        ]
+      },
+      "id": "node/12674219909"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12723558863",
+        "amenity": "recycling",
+        "recycling:PET": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5831668,
+          -33.5805379
+        ]
+      },
+      "id": "node/12723558863"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12776373339",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6125819,
+          -33.49839
+        ]
+      },
+      "id": "node/12776373339"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12777781779",
+        "amenity": "recycling",
+        "operator": "Municipalidad de Lo Barnechea",
+        "recycling:cans": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3173125,
+          -33.354894
+        ]
+      },
+      "id": "node/12777781779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12852001738",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6094952,
+          -33.4979903
+        ]
+      },
+      "id": "node/12852001738"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12900477900",
+        "amenity": "recycling",
+        "operator": "Parquemet",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6782388,
+          -33.5223355
+        ]
+      },
+      "id": "node/12900477900"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12915071292",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.610862,
+          -33.5004022
+        ]
+      },
+      "id": "node/12915071292"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12915112738",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6108617,
+          -33.5003023
+        ]
+      },
+      "id": "node/12915112738"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12990576912",
+        "addr:city": "San Bernardo",
+        "amenity": "recycling",
+        "name": "Punto Verde Carozzi",
+        "operator": "Carozzi",
+        "operator:type": "private",
+        "recycling_type": "centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7073768,
+          -33.6472045
+        ]
+      },
+      "id": "node/12990576912"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13022323332",
+        "amenity": "recycling",
+        "colour": "green",
+        "fixme": "Reconocimiento para añadir tags necesarios.",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5964193,
+          -33.4549157
+        ]
+      },
+      "id": "node/13022323332"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13032201938",
+        "amenity": "recycling",
+        "colour": "yellow",
+        "covered": "no",
+        "indoor": "no",
+        "material": "metal",
+        "recycling:cooking_oil": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5937209,
+          -33.4540652
+        ]
+      },
+      "id": "node/13032201938"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13067139920",
+        "amenity": "recycling",
+        "colour": "purple",
+        "indoor": "no",
+        "operator": "Pontificia Universidad Católica de Chile",
+        "recycling:batteries": "no",
+        "recycling:cds": "yes",
+        "recycling:computers": "yes",
+        "recycling:electrical_appliances": "yes",
+        "recycling_type": "container",
+        "waste": "recycling"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6143745,
+          -33.4988546
+        ]
+      },
+      "id": "node/13067139920"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13067139941",
+        "amenity": "recycling",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.614455,
+          -33.4991938
+        ]
+      },
+      "id": "node/13067139941"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13256678445",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7278215,
+          -33.4953457
+        ]
+      },
+      "id": "node/13256678445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13395476023",
+        "amenity": "recycling",
+        "covered": "no",
+        "opening_hours": "24/7",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.899249,
+          -33.762799
+        ]
+      },
+      "id": "node/13395476023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13482646351",
+        "amenity": "recycling",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.67236,
+          -33.4534041
+        ]
+      },
+      "id": "node/13482646351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13721567954",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.670497,
+          -33.4528241
+        ]
+      },
+      "id": "node/13721567954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13721642287",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6675444,
+          -33.4520366
+        ]
+      },
+      "id": "node/13721642287"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13722450649",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6337455,
+          -33.4263921
+        ]
+      },
+      "id": "node/13722450649"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13724446476",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6605551,
+          -33.4522442
+        ]
+      },
+      "id": "node/13724446476"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13724466927",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6576292,
+          -33.4528643
+        ]
+      },
+      "id": "node/13724466927"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13724491512",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6529342,
+          -33.4523326
+        ]
+      },
+      "id": "node/13724491512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13724491513",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6528522,
+          -33.4515137
+        ]
+      },
+      "id": "node/13724491513"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13724501189",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6505831,
+          -33.4513358
+        ]
+      },
+      "id": "node/13724501189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13726278314",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6919852,
+          -33.5117033
+        ]
+      },
+      "id": "node/13726278314"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13761063924",
+        "addr:housename": "Terminal Alameda",
+        "addr:housenumber": "3750",
+        "addr:street": "Avenida Libertador Bernardo O'Higgins",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6864369,
+          -33.4533109
+        ]
+      },
+      "id": "node/13761063924"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13783165801",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6424312,
+          -33.4677188
+        ]
+      },
+      "id": "node/13783165801"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14001196634",
+        "amenity": "recycling",
+        "recycling:cans": "yes",
+        "recycling:cardboard": "yes",
+        "recycling:glass": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2901943,
+          -33.3371751
+        ]
+      },
+      "id": "node/14001196634"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14002898267",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6399571,
+          -33.4235656
+        ]
+      },
+      "id": "node/14002898267"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14002898268",
+        "amenity": "recycling",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6402459,
+          -33.4227732
+        ]
+      },
+      "id": "node/14002898268"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14025104718",
+        "access": "yes",
+        "amenity": "recycling",
+        "name": "municipalidad de maipú",
+        "opening_hours": "24/7",
+        "operator": "municipalidad de maipú",
+        "recycling:beverage_cartons": "yes",
+        "recycling:cans": "yes",
+        "recycling:cooking_oil": "yes",
+        "recycling:glass": "yes",
+        "recycling:glass_bottles": "yes",
+        "recycling:newspaper": "yes",
+        "recycling:paper": "yes",
+        "recycling:plastic": "yes",
+        "recycling:plastic_bottles": "yes",
+        "recycling:plastic_packaging": "yes",
+        "recycling:pmd": "yes",
+        "recycling:waste": "yes",
+        "recycling_type": "centre",
+        "survey:date": "2026-07-18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7605701,
+          -33.4808854
+        ]
+      },
+      "id": "node/14025104718"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14175954015",
+        "amenity": "recycling",
+        "opening_hours": "24/7",
+        "operator": "ReSimple",
+        "recycling:glass_bottles": "yes",
+        "recycling_type": "container"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.663695,
+          -33.5342771
+        ]
+      },
+      "id": "node/14175954015"
+    }
+  ]
+}

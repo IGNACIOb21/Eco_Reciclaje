@@ -1,0 +1,22 @@
+{
+  // F5 corre la APK con una cuenta anónima NUEVA en Supabase en cada arranque.
+  // "sesión guardada" reutiliza la cuenta del arranque anterior.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Rebin APK (cuenta anónima nueva)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "app",
+      "program": "lib/main.dart",
+      "toolArgs": ["--dart-define=NUEVA_CUENTA_ANONIMA=true"]
+    },
+    {
+      "name": "Rebin APK (sesión guardada)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "app",
+      "program": "lib/main.dart"
+    }
+  ]
+}
