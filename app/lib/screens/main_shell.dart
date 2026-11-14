@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../repositories/puntos_repository.dart';
 import 'comunidad_screen.dart';
-import 'escanear_placeholder_screen.dart';
+import 'escanear_screen.dart';
 import 'inicio_screen.dart';
 import 'mapa_screen.dart';
 import 'perfil_screen.dart';
@@ -30,7 +30,7 @@ class _MainShellState extends State<MainShell> {
   Widget build(BuildContext context) {
     final pantallas = [
       InicioScreen(onIrAMapa: () => _irA(2), onIrAEscanear: () => _irA(1)),
-      const EscanearPlaceholderScreen(),
+      EscanearScreen(onIrAMapa: () => _irA(2)),
       MapaScreen(repositorio: widget.puntosRepository),
       const ComunidadScreen(),
       const ServiciosScreen(),
