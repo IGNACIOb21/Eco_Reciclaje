@@ -11,17 +11,22 @@ class PuntoCard extends StatelessWidget {
   final double distanciaKm;
   final VoidCallback onTap;
 
+  /// Margen exterior; sin margen lateral dentro de listas que ya tienen
+  /// padding.
+  final EdgeInsetsGeometry margen;
+
   const PuntoCard({
     super.key,
     required this.punto,
     required this.distanciaKm,
     required this.onTap,
+    this.margen = const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      margin: margen,
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: onTap,
@@ -51,6 +56,18 @@ class PuntoCard extends StatelessWidget {
                         color: context.colores.textoSecundario,
                         fontSize: 13,
                       ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      punto.materiales.isEmpty
+                          ? 'Sin categorías registradas'
+                          : punto.materiales.map((m) => m.etiqueta).join(' · '),
+                      style: TextStyle(
+                        color: context.colores.textoSecundario,
+                        fontSize: 12,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 6),
                     Row(

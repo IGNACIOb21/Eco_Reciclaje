@@ -8,6 +8,12 @@ class Env {
   static String get supabaseUrl => _leer('SUPABASE_URL');
   static String get supabaseAnonKey => _leer('SUPABASE_ANON_KEY');
 
+  /// Token público de Mapbox (`pk.…`, cuenta Free Tier sin tarjeta). Vacío
+  /// si no está en `.env`: el mapa muestra un aviso en vez de cargar.
+  static String get mapboxAccessToken => dotenv.isInitialized
+      ? dotenv.get('MAPBOX_ACCESS_TOKEN', fallback: '').trim()
+      : '';
+
   /// `--dart-define=NUEVA_CUENTA_ANONIMA=true` (lo pasa el launch.json de
   /// VS Code al correr con F5): descarta la sesión guardada y crea una cuenta
   /// anónima nueva en Supabase en cada arranque.

@@ -17,6 +17,15 @@ abstract class CuentaRepository {
   /// Reemplaza la sesión actual por la de la cuenta [correo]. Devuelve el
   /// auth.uid() de esa cuenta.
   Future<String> iniciarSesion(String correo, String contrasena);
+
+  /// true si la sesión actual es de una cuenta con correo vinculado (no un
+  /// invitado). Solo esas cuentas pueden cerrar sesión: un invitado no tiene
+  /// cómo volver a entrar y perdería sus puntos.
+  bool get tieneCorreoVinculado;
+
+  /// Cierra la sesión de la cuenta y abre una de invitado nueva, para que la
+  /// app siga funcionando. Devuelve el auth.uid() de esa sesión nueva.
+  Future<String> cerrarSesion();
 }
 
 enum MotivoErrorCuenta {
@@ -26,6 +35,7 @@ enum MotivoErrorCuenta {
   contrasenaDebil,
   credencialesInvalidas,
   sinConexion,
+  errorServidor,
   desconocido,
 }
 
@@ -48,6 +58,9 @@ class CuentaException implements Exception {
       'Correo o contraseña incorrectos.',
     MotivoErrorCuenta.sinConexion =>
       'No hay conexión. Revisa tu internet e inténtalo de nuevo.',
+    MotivoErrorCuenta.errorServidor =>
+      'El servidor no pudo completar la solicitud. Inténtalo de nuevo en '
+          'unos minutos.',
     MotivoErrorCuenta.desconocido =>
       'Algo salió mal. Inténtalo de nuevo en unos minutos.',
   };

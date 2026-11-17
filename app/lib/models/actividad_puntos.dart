@@ -51,12 +51,21 @@ class ActividadPuntos {
         'Mantuviste tu racha diaria',
       ),
       'canje' => (Icons.redeem, AppTheme.acento, 'Canjeaste un beneficio'),
-      _ => (Icons.star, AppTheme.acento, 'Ajuste de puntos'),
+      _ => (Icons.star, AppTheme.acento, 'Ajuste de Rebin Points'),
     };
+    // Un canje positivo es la devolución de un canje cancelado, y una acción
+    // con puntos negativos es una reversión (p. ej. un reporte que resultó
+    // infundado): no deben leerse como si la persona hubiera hecho la acción.
+    final devolucion = movimiento.tipo == 'canje' && movimiento.cantidad > 0;
+    final reversion = movimiento.tipo != 'canje' && movimiento.cantidad < 0;
     return ActividadPuntos(
       icono: icono,
       color: color,
-      texto: texto,
+      texto: devolucion
+          ? 'Te devolvimos los Rebin Points de un canje'
+          : reversion
+          ? 'Se revirtieron Rebin Points de una acción'
+          : texto,
       puntos: movimiento.cantidad,
     );
   }

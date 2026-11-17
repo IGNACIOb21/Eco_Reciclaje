@@ -1,4 +1,4 @@
-import 'clase_residuo.dart';
+import 'info_clase.dart';
 
 /// Umbrales de confianza del modelo (los mismos de `config.py`:
 /// UMBRAL_SEGURO y UMBRAL_DUDOSO).
@@ -22,25 +22,25 @@ Confianza nivelDeConfianza(double probabilidad) {
   return Confianza.baja;
 }
 
-class Prediccion {
+class PrediccionEscaneo {
   /// Clase tal como viene en labels.txt (por ejemplo `glass`).
   final String clase;
   final double probabilidad;
 
-  const Prediccion(this.clase, this.probabilidad);
+  const PrediccionEscaneo(this.clase, this.probabilidad);
 
   InfoClase get info => infoDeClase(clase);
 }
 
-class ResultadoClasificacion {
+class ResultadoEscaneo {
   /// Las mejores predicciones, de mayor a menor probabilidad.
-  final List<Prediccion> top;
+  final List<PrediccionEscaneo> top;
 
   /// Duración de la inferencia del modelo (sin decodificar la foto).
   final int milisegundosInferencia;
 
-  const ResultadoClasificacion(this.top, this.milisegundosInferencia);
+  const ResultadoEscaneo(this.top, this.milisegundosInferencia);
 
-  Prediccion get mejor => top.first;
+  PrediccionEscaneo get mejor => top.first;
   Confianza get confianza => nivelDeConfianza(mejor.probabilidad);
 }

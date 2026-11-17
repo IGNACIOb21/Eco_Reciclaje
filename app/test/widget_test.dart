@@ -2,20 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:recircula/theme/app_themes.dart';
 import 'package:recircula/data/comunas_demo.dart';
 import 'package:recircula/data/mock_puntos.dart';
 import 'package:recircula/main.dart';
+import 'package:recircula/models/nivel.dart';
 import 'package:recircula/models/usuario.dart';
 import 'package:recircula/repositories/cuenta_repository_mock.dart';
 import 'package:recircula/repositories/puntos_repository_mock.dart';
 import 'package:recircula/repositories/usuario_repository.dart';
 import 'package:recircula/repositories/usuario_repository_mock.dart';
+import 'package:recircula/screens/escanear_screen.dart';
+import 'package:recircula/screens/bienvenida_screen.dart';
+import 'package:recircula/screens/iniciar_sesion_screen.dart';
 import 'package:recircula/screens/registro_cuenta_screen.dart';
 import 'package:recircula/state/perfil_local_controller.dart';
+import 'package:recircula/state/primer_inicio_controller.dart';
+import 'package:recircula/state/tema_controller.dart';
 import 'package:recircula/state/usuario_controller.dart';
 import 'package:recircula/theme/app_theme.dart';
+import 'package:recircula/utils/busqueda.dart';
 import 'package:recircula/utils/geo.dart';
-import 'package:recircula/widgets/punto_card.dart';
+import 'package:recircula/widgets/tarjeta_cercana.dart';
 
 void _usarTamanoDeTelefono(WidgetTester tester) {
   tester.view.physicalSize = const Size(1080, 2400);
@@ -26,24 +34,38 @@ void _usarTamanoDeTelefono(WidgetTester tester) {
 
 class _UsuarioRepositoryFijo implements UsuarioRepository {
   final int puntos;
-  String? nombre;
+  final int? acumulados;
+  final List<Nivel>? niveles;
+  String? nombre = 'Test';
   String alias = 'Usuario Rebin';
-  _UsuarioRepositoryFijo(this.puntos, {this.nombre = 'Test'});
+  final String? correo;
+
+  /// Con [sinConexion] en true, obtenerOCrear falla como sin red.
+  bool sinConexion = false;
+  _UsuarioRepositoryFijo(
+    this.puntos, {
+    this.correo,
+    this.acumulados,
+    this.niveles,
+  });
 
   @override
-  Future<Usuario> obtenerOCrear() async => Usuario(
-    id: 'test',
-    nombre: nombre,
-    alias: alias,
-    fechaRegistro: DateTime(2026, 9, 15),
-    puntosTotales: puntos,
-  );
+  Future<Usuario> obtenerOCrear() async {
+    if (sinConexion) throw Exception('sin conexión');
+    return Usuario(
+      id: 'test',
+      correo: correo,
+      nombre: nombre,
+      alias: alias,
+      fechaRegistro: DateTime(2026, 9, 15),
+      puntosTotales: puntos,
+      puntosAcumulados: acumulados,
+      niveles: niveles,
+    );
+  }
 
   @override
-  Future<Usuario> guardarDatos({
-    required String nombre,
-    required String alias,
-  }) async {
+  Future<Usuario> guardarDatos({required String alias, String? nombre}) async {
     this.nombre = nombre;
     this.alias = alias;
     return obtenerOCrear();
@@ -55,19 +77,37 @@ class _UsuarioRepositoryConError implements UsuarioRepository {
   Future<Usuario> obtenerOCrear() async => throw Exception('sin conexión');
 
   @override
-  Future<Usuario> guardarDatos({
-    required String nombre,
-    required String alias,
-  }) async => throw Exception('sin conexión');
+  Future<Usuario> guardarDatos({required String alias, String? nombre}) async =>
+      throw Exception('sin conexión');
 }
+
+/// Lo que dice la lista del mapa bajo "Cerca de ti" con [n] puntos.
+String _conteo(int n) => switch (n) {
+  0 => '0 puntos',
+  1 => '1 punto · arrastra para ver más',
+  _ => '$n puntos · arrastra para ver más',
+};
+
+/// Texto del widget `Text` con esa key.
+String? _texto(WidgetTester tester, String key) =>
+    tester.widget<Text>(find.byKey(Key(key))).data;
 
 Future<PerfilLocalController> _montarApp(
   WidgetTester tester, {
   UsuarioRepository? usuarioRepository,
+  bool primerInicioCompletado = true,
+  Map<String, Object> valoresIniciales = const {},
 }) async {
   _usarTamanoDeTelefono(tester);
-  SharedPreferences.setMockInitialValues({});
+  SharedPreferences.setMockInitialValues({
+    'primer_inicio_completado': primerInicioCompletado,
+    // Las láminas de presentación tienen su propio test.
+    'onboarding_visto': true,
+    ...valoresIniciales,
+  });
   final perfil = await PerfilLocalController.cargar();
+  final primerInicio = await PrimerInicioController.cargar();
+  final tema = await TemaController.cargar();
   final usuario = UsuarioController(
     usuarioRepository ?? UsuarioRepositoryMock(),
   )..cargar();
@@ -75,6 +115,8 @@ Future<PerfilLocalController> _montarApp(
     RecirculaApp(
       perfilLocal: perfil,
       usuario: usuario,
+      primerInicio: primerInicio,
+      tema: tema,
       puntosRepository: PuntosRepositoryMock(),
     ),
   );
@@ -92,43 +134,100 @@ int _puntosEnRadioPorDefecto({String? comuna}) {
 }
 
 void main() {
-  testWidgets('Inicio muestra el saludo anónimo y el resumen del mapa', (
+  testWidgets('Inicio es el mapa y muestra el saldo y el nivel', (
     tester,
   ) async {
     await _montarApp(tester);
 
-    expect(find.text('Mapa de reciclaje'), findsOneWidget);
-    expect(find.text('¡Hola!'), findsOneWidget);
+    // Inicio es el mapa: el saldo junto al buscador y el nivel arriba de la
+    // lista de puntos (sin saludo, como en el rediseño).
+    expect(find.byKey(const Key('inicio-saldo')), findsOneWidget);
+    expect(find.byKey(const Key('inicio-nivel')), findsOneWidget);
+    expect(find.text('Cerca de ti'), findsOneWidget);
   });
 
-  testWidgets('El tab Mapa muestra los puntos y abre la ficha al tocar uno', (
+  testWidgets(
+    'El mapa (Inicio) muestra los puntos y abre la ficha al tocar uno',
+    (tester) async {
+      await _montarApp(tester);
+
+      expect(find.byIcon(Icons.tune), findsOneWidget);
+      expect(find.text(_conteo(_puntosEnRadioPorDefecto())), findsOneWidget);
+
+      // Tocar un punto de la lista hace lo mismo que tocar su pin: la lista
+      // pasa a ser la vista previa del punto.
+      await tester.tap(find.byType(TarjetaCercana).first);
+      await tester.pumpAndSettle();
+      expect(find.byType(TarjetaCercana), findsNothing);
+      expect(find.text('Cómo llegar'), findsOneWidget);
+
+      // "Volver" regresa a la lista.
+      await tester.tap(find.byKey(const Key('mapa-volver-lista')));
+      await tester.pumpAndSettle();
+      expect(find.byType(TarjetaCercana), findsWidgets);
+
+      await tester.tap(find.byType(TarjetaCercana).first);
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Ver ficha'));
+      await tester.tap(find.text('Ver ficha'));
+      await tester.pumpAndSettle();
+
+      // "Cómo llegar" está en la vista previa, no se repite en la ficha.
+      expect(find.text('Cómo llegar'), findsNothing);
+      expect(find.text('Reportar estado'), findsOneWidget);
+    },
+  );
+
+  testWidgets('El botón de escanear abre el escáner con el modelo de Joaquín', (
     tester,
   ) async {
     await _montarApp(tester);
 
-    await tester.tap(find.byIcon(Icons.map_outlined));
+    await tester.tap(find.byKey(const Key('barra-escanear')));
+    // Sin pumpAndSettle: el botón "respira" unos 14 s.
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
+
+    // El modelo se carga recién al primer escaneo: abrir no lo necesita.
+    expect(find.byType(EscanearScreen), findsOneWidget);
+    expect(find.text('Tomar foto'), findsOneWidget);
+    expect(find.text('Elegir de la galería'), findsOneWidget);
+  });
+
+  testWidgets('El buscador del mapa filtra por comuna sin tildes', (
+    tester,
+  ) async {
+    await _montarApp(tester);
+
+    final enRadio = mockPuntos
+        .where(
+          (p) =>
+              distanciaKm(centroDefectoLat, centroDefectoLng, p.lat, p.lng) <=
+              5,
+        )
+        .toList();
+    final esperados = filtrarPuntos(enRadio, 'nunoa').length;
+    expect(esperados, greaterThan(0));
+    expect(esperados, lessThan(enRadio.length));
+
+    await tester.enterText(find.byType(TextField).first, 'nunoa');
     await tester.pumpAndSettle();
+    expect(find.text('$esperados puntos para «nunoa»'), findsOneWidget);
 
-    expect(find.byIcon(Icons.tune), findsOneWidget);
-    expect(
-      find.text('${_puntosEnRadioPorDefecto()} puntos cerca de ti'),
-      findsOneWidget,
-    );
-
-    await tester.tap(find.byType(PuntoCard).first);
+    await tester.enterText(find.byType(TextField).first, 'zzzz');
     await tester.pumpAndSettle();
+    expect(find.text('0 puntos para «zzzz»'), findsOneWidget);
+    expect(find.textContaining('Ningún punto coincide'), findsOneWidget);
 
-    expect(find.text('Cómo llegar'), findsOneWidget);
-    expect(find.text('Reportar estado'), findsOneWidget);
+    await tester.tap(find.byTooltip('Limpiar búsqueda'));
+    await tester.pumpAndSettle();
+    expect(find.text(_conteo(enRadio.length)), findsOneWidget);
   });
 
   testWidgets('El filtro de comuna en Filtros reduce los puntos mostrados', (
     tester,
   ) async {
     await _montarApp(tester);
-
-    await tester.tap(find.byIcon(Icons.map_outlined));
-    await tester.pumpAndSettle();
 
     final conteoInicial = _puntosEnRadioPorDefecto();
     final conteoLasCondes = _puntosEnRadioPorDefecto(comuna: 'Las Condes');
@@ -145,16 +244,13 @@ void main() {
     await tester.tap(find.text('Aplicar filtros'));
     await tester.pumpAndSettle();
 
-    expect(find.text('$conteoLasCondes puntos cerca de ti'), findsOneWidget);
+    expect(find.text(_conteo(conteoLasCondes)), findsOneWidget);
   });
 
   testWidgets('Limpiar en Filtros vuelve a mostrar el estado sin filtros', (
     tester,
   ) async {
     await _montarApp(tester);
-
-    await tester.tap(find.byIcon(Icons.map_outlined));
-    await tester.pumpAndSettle();
 
     final conteoInicial = _puntosEnRadioPorDefecto();
 
@@ -165,56 +261,55 @@ void main() {
     await tester.tap(find.text('Aplicar filtros'));
     await tester.pumpAndSettle();
 
-    expect(find.text('$conteoInicial puntos cerca de ti'), findsNothing);
+    expect(find.text(_conteo(conteoInicial)), findsNothing);
 
     await tester.tap(find.byIcon(Icons.tune));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Limpiar'));
     await tester.pumpAndSettle();
 
-    expect(find.text('$conteoInicial puntos cerca de ti'), findsOneWidget);
+    expect(find.text(_conteo(conteoInicial)), findsOneWidget);
   });
 
-  testWidgets(
-    'Personalizar el nombre se refleja en Perfil e Inicio y se persiste',
-    (tester) async {
-      final controller = await _montarApp(tester);
+  testWidgets('Personalizar el nombre se refleja en Perfil y se persiste', (
+    tester,
+  ) async {
+    final controller = await _montarApp(tester);
 
-      await tester.tap(find.byIcon(Icons.person_outline));
-      await tester.pumpAndSettle();
-      expect(find.text('Usuario anónimo'), findsOneWidget);
+    await tester.tap(find.byIcon(Icons.person_outline));
+    await tester.pumpAndSettle();
+    expect(find.text('Usuario anónimo'), findsOneWidget);
 
-      await tester.tap(find.text('Personalizar perfil'));
-      await tester.pumpAndSettle();
-      await tester.enterText(find.byType(TextField), 'Camila');
-      await tester.tap(find.text('Guardar'));
-      await tester.pumpAndSettle();
+    await tester.tap(find.text('Personalizar perfil'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'Camila');
+    await tester.tap(find.text('Guardar'));
+    await tester.pumpAndSettle();
 
-      expect(find.text('Camila'), findsOneWidget);
-      expect(controller.perfil.nombre, 'Camila');
+    expect(find.text('Camila'), findsOneWidget);
+    expect(controller.perfil.nombre, 'Camila');
 
-      await tester.tap(find.byIcon(Icons.home_outlined));
-      await tester.pumpAndSettle();
-      expect(find.text('Hola, Camila'), findsOneWidget);
-
-      final prefs = await SharedPreferences.getInstance();
-      expect(
-        prefs.getString('perfil_local_${controller.clave}'),
-        contains('Camila'),
-      );
-    },
-  );
+    final prefs = await SharedPreferences.getInstance();
+    expect(
+      prefs.getString('perfil_local_${controller.clave}'),
+      contains('Camila'),
+    );
+  });
 
   testWidgets(
     'Perfil muestra puntos, nivel y fecha de alta del usuario remoto',
     (tester) async {
-      await _montarApp(tester, usuarioRepository: _UsuarioRepositoryFijo(158));
+      await _montarApp(tester, usuarioRepository: _UsuarioRepositoryFijo(720));
 
       await tester.tap(find.byIcon(Icons.person_outline));
       await tester.pumpAndSettle();
 
-      expect(find.text('Nivel Recicla-Pro'), findsOneWidget);
-      expect(find.text('158/200 pts'), findsOneWidget);
+      expect(_texto(tester, 'perfil-nivel-nombre'), 'Pro');
+      expect(_texto(tester, 'perfil-nivel-avance'), '720 / 1500');
+      expect(
+        find.text('Te faltan 780 Rebin Points para Experto'),
+        findsOneWidget,
+      );
       expect(
         find.textContaining('Reciclando desde septiembre 2026'),
         findsOneWidget,
@@ -222,9 +317,62 @@ void main() {
       final barra = tester.widget<LinearProgressIndicator>(
         find.byType(LinearProgressIndicator),
       );
-      expect(barra.value, closeTo((158 - 130) / (200 - 130), 0.001));
+      expect(barra.value, closeTo((720 - 600) / (1500 - 600), 0.001));
     },
   );
+
+  testWidgets(
+    'El nivel usa los umbrales de la nube y lo acumulado, no el saldo',
+    (tester) async {
+      await _montarApp(
+        tester,
+        usuarioRepository: _UsuarioRepositoryFijo(
+          40,
+          acumulados: 120,
+          niveles: const [
+            Nivel('Novato', 0),
+            Nivel('Aprendiz', 100),
+            Nivel('Pro', 300),
+          ],
+        ),
+      );
+
+      await tester.tap(find.byIcon(Icons.person_outline));
+      await tester.pumpAndSettle();
+
+      expect(_texto(tester, 'perfil-nivel-nombre'), 'Aprendiz');
+      expect(_texto(tester, 'perfil-nivel-avance'), '120 / 300');
+      // Arriba a la derecha va el saldo, que los canjes sí descuentan.
+      expect(_texto(tester, 'perfil-saldo'), '40');
+    },
+  );
+
+  testWidgets('Sin conexión el Perfil muestra la última copia de los puntos', (
+    tester,
+  ) async {
+    final repo = _UsuarioRepositoryFijo(720);
+    // Primera vez con conexión: se guarda la copia en el teléfono.
+    SharedPreferences.setMockInitialValues({});
+    final controller = UsuarioController(repo);
+    await controller.cargar();
+    final prefs = await SharedPreferences.getInstance();
+    final copia = prefs.getString('resumen_puntos');
+    expect(copia, contains('"acumulado":720'));
+
+    // Siguiente arranque, sin red.
+    repo.sinConexion = true;
+    await _montarApp(
+      tester,
+      usuarioRepository: repo,
+      valoresIniciales: {'resumen_puntos': copia!},
+    );
+    await tester.tap(find.byIcon(Icons.person_outline));
+    await tester.pumpAndSettle();
+
+    expect(_texto(tester, 'perfil-nivel-nombre'), 'Pro');
+    expect(_texto(tester, 'perfil-nivel-avance'), '720 / 1500');
+    expect(find.textContaining('Sin conexión · datos del'), findsOneWidget);
+  });
 
   testWidgets('Perfil ofrece reintentar si no se pudo cargar el usuario', (
     tester,
@@ -234,32 +382,71 @@ void main() {
     await tester.tap(find.byIcon(Icons.person_outline));
     await tester.pumpAndSettle();
 
-    expect(find.text('No pudimos cargar tus puntos.'), findsOneWidget);
+    expect(find.text('No pudimos cargar tus Rebin Points.'), findsOneWidget);
     expect(find.text('Reintentar'), findsOneWidget);
   });
 
-  testWidgets('El switch de Modo Eco cambia el tema de toda la app', (
+  testWidgets(
+    'La app parte en el modo claro y Perfil › Tema lo cambia',
+    (tester) async {
+      await _montarApp(tester);
+
+      await tester.tap(find.byIcon(Icons.person_outline));
+      await tester.pumpAndSettle();
+
+      final tema = find.text('Tema');
+      await tester.scrollUntilVisible(tema, 200);
+      ThemeData temaActual() => Theme.of(tester.element(tema.first));
+      expect(
+        temaActual().scaffoldBackgroundColor,
+        AppTheme.light.scaffoldBackgroundColor,
+      );
+      expect(temaActual().brightness, Brightness.light);
+
+      await tester.tap(tema.first);
+      await tester.pumpAndSettle();
+      for (final t in TemaApp.values) {
+        expect(find.text(t.nombre), findsWidgets);
+      }
+
+      await tester.tap(find.text('Azul Nórdico'));
+      await tester.pumpAndSettle();
+
+      expect(
+        temaActual().scaffoldBackgroundColor,
+        AppThemes.nordicBlueTheme.scaffoldBackgroundColor,
+      );
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getString('tema_app'), 'nordico');
+    },
+  );
+
+  testWidgets('Quien ya había elegido el modo claro lo conserva', (
     tester,
   ) async {
-    await _montarApp(tester);
+    await _montarApp(tester, valoresIniciales: {'modo_eco': false});
+    final fondo = Theme.of(tester.element(find.byType(Scaffold).first))
+        .scaffoldBackgroundColor;
+    expect(fondo, AppTheme.light.scaffoldBackgroundColor);
+  });
 
-    await tester.tap(find.byIcon(Icons.person_outline));
+  testWidgets('El tema elegido se mantiene al cambiar de cuenta', (
+    tester,
+  ) async {
+    final perfil = await _montarApp(
+      tester,
+      valoresIniciales: {'tema_app': 'claro'},
+    );
+    Color fondo() =>
+        Theme.of(tester.element(find.byType(Scaffold).first))
+            .scaffoldBackgroundColor;
+    expect(fondo(), AppTheme.light.scaffoldBackgroundColor);
+
+    // Lo que pasa al cerrar o iniciar sesión: el perfil local cambia de cuenta.
+    await perfil.cambiarClave('otra-cuenta');
     await tester.pumpAndSettle();
 
-    ThemeData temaActual() => Theme.of(tester.element(find.text('Modo Eco')));
-    expect(
-      temaActual().scaffoldBackgroundColor,
-      AppTheme.light.scaffoldBackgroundColor,
-    );
-
-    await tester.tap(find.byType(SwitchListTile));
-    await tester.pumpAndSettle();
-
-    expect(
-      temaActual().scaffoldBackgroundColor,
-      AppTheme.eco.scaffoldBackgroundColor,
-    );
-    expect(temaActual().brightness, Brightness.dark);
+    expect(fondo(), AppTheme.light.scaffoldBackgroundColor);
   });
 
   testWidgets('Comunidad permite unirse al grupo de la comuna y publicar', (
@@ -269,12 +456,13 @@ void main() {
 
     await tester.tap(find.byIcon(Icons.groups_outlined).first);
     await tester.pumpAndSettle();
+    // Los grupos son la cuarta pestaña de Comunidad.
+    await tester.tap(find.text('Grupos'));
+    await tester.pumpAndSettle();
 
-    expect(find.text('Vecinos Reciclan Ñuñoa'), findsOneWidget);
-    expect(
-      find.text('Únete a la comunidad para publicar anuncios.'),
-      findsOneWidget,
-    );
+    // Sin Supabase (test) los grupos vienen de ComunidadesRepositoryMock.
+    expect(find.text('Comunidades en Ñuñoa'), findsOneWidget);
+    expect(find.text('Vecinos de Ñuñoa'), findsOneWidget);
 
     await tester.tap(find.text('Unirse'));
     await tester.pumpAndSettle();
@@ -299,6 +487,9 @@ void main() {
 
     await tester.tap(find.byIcon(Icons.groups_outlined).first);
     await tester.pumpAndSettle();
+    // Los grupos son la cuarta pestaña de Comunidad.
+    await tester.tap(find.text('Grupos'));
+    await tester.pumpAndSettle();
 
     expect(find.text('Aún no hay una comunidad en La Reina'), findsOneWidget);
 
@@ -308,41 +499,95 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Vecinos de La Reina'), findsOneWidget);
-    expect(find.text('Miembro'), findsOneWidget);
-    expect(controller.perfil.comunidadUnidaId, 'local-la-reina');
+    // Quien la crea queda como organizador.
+    expect(find.text('Organizas'), findsOneWidget);
   });
 
   testWidgets(
-    'Una cuenta nueva pasa por la bienvenida: nombre y alias obligatorios',
+    'Primer inicio: abre directo en el mapa, sin bienvenida ni inicio de sesión',
     (tester) async {
-      final repo = _UsuarioRepositoryFijo(0, nombre: null);
-      final controller = await _montarApp(tester, usuarioRepository: repo);
+      await _montarApp(tester, primerInicioCompletado: false);
 
-      expect(find.text('¡Bienvenido a Rebin!'), findsOneWidget);
+      expect(find.text('Inicia sesión'), findsNothing);
+      expect(find.text('Omitir'), findsNothing);
+      expect(find.text('Cerca de ti'), findsOneWidget);
 
-      // Sin datos no avanza.
-      await tester.tap(find.text('Continuar'));
+      // El permiso de ubicación se pide una sola vez, sobre el mapa.
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getBool('permisos_solicitados'), isTrue);
+      expect(prefs.getBool('primer_inicio_completado'), isTrue);
+    },
+  );
+
+  testWidgets(
+    'Iniciar sesión en el primer inicio salta el alias y va a los permisos',
+    (tester) async {
+      _usarTamanoDeTelefono(tester);
+      SharedPreferences.setMockInitialValues({'onboarding_visto': true});
+      final perfil = await PerfilLocalController.cargar();
+      final primerInicio = await PrimerInicioController.cargar();
+      final usuario = UsuarioController(UsuarioRepositoryMock())..cargar();
+      // Una cuenta ya registrada en el mock.
+      final cuenta = CuentaRepositoryMock();
+      await cuenta.enviarCodigo('test@rebin.cl');
+      await cuenta.verificarCodigo(
+        'test@rebin.cl',
+        CuentaRepositoryMock.codigoValido,
+      );
+      await cuenta.crearContrasena('Clave123!');
+
+      await tester.pumpWidget(
+        UsuarioScope(
+          controller: usuario,
+          child: PerfilLocalScope(
+            controller: perfil,
+            child: PrimerInicioScope(
+              controller: primerInicio,
+              child: MaterialApp(
+                theme: AppTheme.light,
+                home: BienvenidaScreen(cuentaRepositorio: cuenta),
+              ),
+            ),
+          ),
+        ),
+      );
       await tester.pumpAndSettle();
-      expect(find.text('Ingresa tu nombre'), findsOneWidget);
-      expect(find.text('Elige un alias'), findsOneWidget);
 
-      await tester.enterText(find.byType(TextFormField).at(0), 'Camila Rojas');
-      await tester.enterText(find.byType(TextFormField).at(1), 'cami_recicla');
-      await tester.tap(find.text('Continuar'));
+      await tester.enterText(find.byType(TextField).at(0), 'test@rebin.cl');
+      await tester.enterText(find.byType(TextField).at(1), 'Clave123!');
+      await tester.tap(find.widgetWithText(FilledButton, 'Iniciar sesión'));
       await tester.pumpAndSettle();
 
-      // Los permisos se pueden rechazar.
+      expect(find.text('¡Bienvenido a Rebin!'), findsNothing);
       expect(find.text('Activa tu ubicación'), findsOneWidget);
-      await tester.tap(find.text('Ahora no'));
-      await tester.pumpAndSettle();
-      expect(find.text('Recibe avisos'), findsOneWidget);
-      await tester.tap(find.text('Ahora no, empezar'));
-      await tester.pumpAndSettle();
+    },
+  );
 
-      expect(repo.nombre, 'Camila Rojas');
-      expect(repo.alias, 'cami_recicla');
-      expect(controller.perfil.nombre, 'cami_recicla');
-      expect(find.text('Hola, cami_recicla'), findsOneWidget);
+  testWidgets(
+    'Cerrar sesión vuelve a Inicio como invitado, sin bienvenida ni permisos',
+    (tester) async {
+      await _montarApp(
+        tester,
+        usuarioRepository: _UsuarioRepositoryFijo(40, correo: 'test@rebin.cl'),
+      );
+      await tester.tap(find.byIcon(Icons.person_outline));
+      await tester.pumpAndSettle();
+      final cerrar = find.widgetWithText(ListTile, 'Cerrar sesión');
+      await tester.scrollUntilVisible(cerrar, 200);
+      await tester.tap(cerrar);
+      await tester.pumpAndSettle();
+      await tester.tap(find.widgetWithText(FilledButton, 'Cerrar sesión'));
+      // Sin pumpAndSettle: el botón central de la barra "respira" unos 14 s y
+      // el aviso (4 s) ya se habría ido cuando el test lo mire.
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 500));
+
+      expect(find.text('Cerraste sesión'), findsOneWidget);
+      expect(find.text('Omitir'), findsNothing);
+      expect(find.text('¡Bienvenido a Rebin!'), findsNothing);
+      expect(find.text('Activa tu ubicación'), findsNothing);
+      // Vuelve a la pestaña Inicio.
+      expect(find.text('Cerca de ti'), findsOneWidget);
     },
   );
 
@@ -440,17 +685,88 @@ void main() {
     await _montarApp(tester);
     await tester.tap(find.byIcon(Icons.person_outline));
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(
-      find.text('¿Ya tienes cuenta? Inicia sesión'),
-      200,
-    );
-    await tester.tap(find.text('¿Ya tienes cuenta? Inicia sesión'));
+    final iniciar = find.widgetWithText(ListTile, 'Iniciar sesión');
+    await tester.scrollUntilVisible(iniciar, 200);
+    await tester.tap(iniciar);
     await tester.pumpAndSettle();
+
+    // Abre en la pestaña "Inicia sesión", con "Regístrate" al lado.
+    expect(find.text('Regístrate'), findsOneWidget);
+    expect(find.text('Inicia sesión'), findsOneWidget);
 
     await tester.enterText(find.byType(TextField).at(0), 'camila@gmail.com');
     await tester.enterText(find.byType(TextField).at(1), 'Recicla#2026');
-    await tester.tap(find.widgetWithText(FilledButton, 'Entrar'));
+    await tester.tap(find.widgetWithText(FilledButton, 'Iniciar sesión'));
     await tester.pumpAndSettle();
     expect(find.text('Correo o contraseña incorrectos.'), findsOneWidget);
+
+    // La X cierra sin cambiar nada.
+    await tester.tap(find.byTooltip('Cerrar'));
+    await tester.pumpAndSettle();
+    expect(find.text('Regístrate'), findsNothing);
+  });
+
+  testWidgets('Iniciar sesión aparece aunque el usuario no cargue', (
+    tester,
+  ) async {
+    await _montarApp(tester, usuarioRepository: _UsuarioRepositoryConError());
+    await tester.tap(find.byIcon(Icons.person_outline));
+    await tester.pumpAndSettle();
+    final iniciar = find.widgetWithText(ListTile, 'Iniciar sesión');
+    await tester.scrollUntilVisible(iniciar, 200);
+    expect(iniciar, findsOneWidget);
+    expect(find.widgetWithText(ListTile, 'Cerrar sesión'), findsOneWidget);
+  });
+
+  testWidgets(
+    'Cerrar sesión sin correo vinculado avisa que está deshabilitado',
+    (tester) async {
+      await _montarApp(tester);
+      await tester.tap(find.byIcon(Icons.person_outline));
+      await tester.pumpAndSettle();
+      final cerrar = find.widgetWithText(ListTile, 'Cerrar sesión');
+      await tester.scrollUntilVisible(cerrar, 200);
+      expect(
+        find.text('Disponible con una cuenta con correo vinculado'),
+        findsOneWidget,
+      );
+
+      await tester.tap(cerrar);
+      await tester.pumpAndSettle();
+      expect(
+        find.textContaining('no tiene un correo vinculado'),
+        findsOneWidget,
+      );
+      await tester.tap(find.text('Entendido'));
+      await tester.pumpAndSettle();
+      // Sigue en el Perfil, con la misma sesión.
+      expect(cerrar, findsOneWidget);
+    },
+  );
+
+  testWidgets('La pestaña Regístrate lleva a crear la cuenta', (tester) async {
+    _usarTamanoDeTelefono(tester);
+    SharedPreferences.setMockInitialValues({});
+    final perfil = await PerfilLocalController.cargar();
+    final usuario = UsuarioController(UsuarioRepositoryMock())..cargar();
+    await tester.pumpWidget(
+      UsuarioScope(
+        controller: usuario,
+        child: PerfilLocalScope(
+          controller: perfil,
+          child: MaterialApp(
+            theme: AppTheme.light,
+            home: IniciarSesionScreen(repositorio: CuentaRepositoryMock()),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Regístrate'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(FilledButton, 'Crear cuenta'));
+    await tester.pumpAndSettle();
+    expect(find.text('Enviar código'), findsOneWidget);
   });
 }

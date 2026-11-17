@@ -9,3 +9,10 @@ void mostrarProximamente(BuildContext context, String funcion) {
     ),
   );
 }
+
+/// Snackbar flotante con un mensaje cualquiera (confirmaciones, avisos).
+void mostrarSnackbar(BuildContext context, String mensaje) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text(mensaje), behavior: SnackBarBehavior.floating),
+  );
+}

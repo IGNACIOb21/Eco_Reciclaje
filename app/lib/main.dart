@@ -3,29 +3,53 @@ import 'package:flutter/material.dart';
 import 'repositories/puntos_repository.dart';
 import 'repositories/usuario_repository_mock.dart';
 import 'repositories/usuario_repository_supabase.dart';
-import 'screens/bienvenida_screen.dart';
 import 'screens/main_shell.dart';
+import 'services/haptica.dart';
 import 'services/supabase_service.dart';
+import 'services/ubicacion_service.dart';
 import 'state/perfil_local_controller.dart';
+import 'state/primer_inicio_controller.dart';
+import 'state/tema_controller.dart';
 import 'state/usuario_controller.dart';
 import 'config/env.dart';
-import 'theme/app_theme.dart';
+import 'utils/rutas.dart';
+import 'widgets/barra_sistema_solida.dart';
+import 'widgets/lanzamiento.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseService.inicializar();
   final authUserId = await _prepararSesion();
-  final perfilLocal = await PerfilLocalController.cargar(clave: authUserId);
   // Sin Supabase configurado (sin .env) se usa el usuario de ejemplo para
   // que la app siga funcionando como demo.
   final usuario = UsuarioController(
     SupabaseService.disponible
         ? UsuarioRepositorySupabase()
         : UsuarioRepositoryMock(),
+    idSesion: SupabaseService.disponible
+        ? () => SupabaseService.cliente.auth.currentUser?.id
+        : null,
   );
   // Sin await: la app abre de inmediato y el perfil se completa al llegar.
   usuario.cargar();
-  runApp(RecirculaApp(perfilLocal: perfilLocal, usuario: usuario));
+  // Lo guardado en el teléfono se lee todo a la vez, junto con la última
+  // ubicación conocida (sin encender el GPS) para que el mapa parta cerca.
+  final (perfilLocal, primerInicio, tema, _, _) = await (
+    PerfilLocalController.cargar(clave: authUserId),
+    PrimerInicioController.cargar(),
+    TemaController.cargar(),
+    Haptica.cargar(),
+    precargarUltimaUbicacion(),
+  ).wait;
+  runApp(
+    RecirculaApp(
+      perfilLocal: perfilLocal,
+      usuario: usuario,
+      primerInicio: primerInicio,
+      tema: tema,
+      mostrarLanzamiento: true,
+    ),
+  );
 }
 
 /// Abre la sesión anónima de Supabase antes de montar la app, para que el
@@ -49,16 +73,25 @@ Future<String?> _prepararSesion() async {
 class RecirculaApp extends StatelessWidget {
   final PerfilLocalController perfilLocal;
   final UsuarioController usuario;
+  final PrimerInicioController primerInicio;
+  final TemaController tema;
 
   // Solo para tests: se propaga hasta MapaScreen para no depender de
   // Supabase inicializado (ver MainShell.puntosRepository).
   final PuntosRepository? puntosRepository;
 
+  /// Animación de apertura (logo y personas reciclando). Solo se activa en
+  /// `main`: los tests montan la app sin ella.
+  final bool mostrarLanzamiento;
+
   const RecirculaApp({
     super.key,
     required this.perfilLocal,
     required this.usuario,
+    required this.primerInicio,
+    required this.tema,
     this.puntosRepository,
+    this.mostrarLanzamiento = false,
   });
 
   @override
@@ -67,26 +100,46 @@ class RecirculaApp extends StatelessWidget {
       controller: usuario,
       child: PerfilLocalScope(
         controller: perfilLocal,
-        child: ListenableBuilder(
-          listenable: perfilLocal,
-          builder: (context, _) {
-            return MaterialApp(
-              title: 'Recircula',
-              debugShowCheckedModeBanner: false,
-              theme: perfilLocal.perfil.modoEco ? AppTheme.eco : AppTheme.light,
-              home: _PuertaEntrada(puntosRepository: puntosRepository),
-            );
-          },
+        child: PrimerInicioScope(
+          controller: primerInicio,
+          child: TemaScope(
+            controller: tema,
+            child: ListenableBuilder(
+              listenable: tema,
+              builder: (context, _) {
+                return MaterialApp(
+                  title: 'Eco Reciclaje',
+                  debugShowCheckedModeBanner: false,
+                  theme: tema.tema.datos,
+                  navigatorObservers: [observadorRutas],
+                  builder: (context, child) {
+                    final app = BarraSistemaSolida(
+                      child: child ?? const SizedBox(),
+                    );
+                    if (!mostrarLanzamiento) return app;
+                    // La animación de apertura va por encima de toda la app.
+                    return Lanzamiento(
+                      datos: usuario,
+                      datosListos: () => usuario.intentado,
+                      child: app,
+                    );
+                  },
+                  home: _PuertaEntrada(puntosRepository: puntosRepository),
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
   }
 }
 
-/// Decide la primera pantalla según el usuario de la sesión: espera a que
-/// cargue, muestra la bienvenida obligatoria si le faltan nombre y alias, y
-/// si no entra a la app. Si la carga falla (sin conexión) entra igual: el
-/// Perfil ofrece reintentar y la bienvenida aparece al reconectar.
+/// La app abre directo en el mapa (Inicio) con la sesión anónima: no hay
+/// pantalla de bienvenida ni de inicio de sesión. El registro con correo se
+/// hace después, desde Perfil. Iniciar o cerrar sesión cambia la clave del
+/// perfil local y el MainShell se reconstruye desde Inicio con la cuenta
+/// nueva.
 class _PuertaEntrada extends StatelessWidget {
   final PuntosRepository? puntosRepository;
 
@@ -94,14 +147,9 @@ class _PuertaEntrada extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final usuarioCtrl = UsuarioScope.of(context);
-    final usuario = usuarioCtrl.usuario;
-    if (!usuarioCtrl.intentado) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-    if (usuario != null && usuario.faltanDatos) {
-      return const BienvenidaScreen();
-    }
-    return MainShell(puntosRepository: puntosRepository);
+    return MainShell(
+      key: ValueKey(PerfilLocalScope.of(context).clave),
+      puntosRepository: puntosRepository,
+    );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-/// Permisos que la APK pide en la bienvenida y que se pueden activar después
-/// desde Ajustes del Perfil.
-enum PermisoApp { ubicacion, notificaciones }
+/// Permisos de la APK. Ubicación y notificaciones se piden en la bienvenida;
+/// la cámara, recién al usar Escanear. Todos se pueden activar después desde
+/// Ajustes del Perfil.
+enum PermisoApp { ubicacion, notificaciones, camara }
 
 /// Estado simplificado para la UI: concedido, se puede pedir con el diálogo
 /// del sistema, o hay que ir a los ajustes del teléfono (Android deja de
@@ -18,6 +19,7 @@ class PermisosService {
   Permission _permiso(PermisoApp p) => switch (p) {
     PermisoApp.ubicacion => Permission.locationWhenInUse,
     PermisoApp.notificaciones => Permission.notification,
+    PermisoApp.camara => Permission.camera,
   };
 
   Future<EstadoPermiso> estado(PermisoApp p) async {

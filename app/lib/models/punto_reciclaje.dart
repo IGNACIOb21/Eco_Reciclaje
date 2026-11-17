@@ -1,3 +1,4 @@
+import 'aviso_punto.dart';
 import 'material_type.dart';
 import 'estado_punto.dart';
 
@@ -24,6 +25,10 @@ class PuntoReciclaje {
   final double calificacionPromedio;
   final int numCalificaciones;
 
+  /// Datos del punto que la comunidad reportó como incorrectos (ver
+  /// [AvisoPunto]); vacío si no hay nada que advertir.
+  final List<AvisoPunto> avisos;
+
   const PuntoReciclaje({
     required this.id,
     required this.nombre,
@@ -36,9 +41,10 @@ class PuntoReciclaje {
     required this.estado,
     required this.calificacionPromedio,
     required this.numCalificaciones,
+    this.avisos = const [],
   });
 
-  /// Arma un punto desde una fila devuelta por la RPC `puntos_cercanos` de
+  /// Arma un punto desde una fila devuelta por la RPC `app_puntos_cercanos` de
   /// Supabase. `comuna` puede venir null (puntos importados de OSM sin
   /// `addr:city`); se muestra un texto explícito en vez de dejarlo vacío.
   factory PuntoReciclaje.fromSupabaseRow(Map<String, dynamic> fila) {
@@ -58,6 +64,11 @@ class PuntoReciclaje {
       estado: EstadoPuntoInfo.fromCodigo(fila['estado_actual'] as String),
       calificacionPromedio: (fila['calificacion_promedio'] as num).toDouble(),
       numCalificaciones: fila['num_calificaciones'] as int,
+      // Una base sin la columna (antes de 20261015150000) no trae avisos.
+      avisos: ((fila['avisos'] as List?) ?? const [])
+          .map((codigo) => AvisoPunto.desdeCodigo(codigo as String))
+          .nonNulls
+          .toList(),
     );
   }
 }

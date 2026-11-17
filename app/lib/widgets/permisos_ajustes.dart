@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../services/permisos_service.dart';
 import '../theme/app_theme.dart';
 
-/// Filas de Ajustes del Perfil con el estado de los permisos de ubicación y
-/// notificaciones, para activarlos si se rechazaron en la bienvenida. Vuelve
-/// a leer el estado al regresar a la app (ej. desde los ajustes del teléfono).
+/// Filas de Ajustes del Perfil con el estado de los permisos de ubicación,
+/// notificaciones y cámara, para activarlos si se rechazaron (en la bienvenida
+/// o, la cámara, al usar Escanear). Vuelve a leer el estado al regresar a la
+/// app (ej. desde los ajustes del teléfono).
 class PermisosAjustes extends StatefulWidget {
   final PermisosService permisos;
 
@@ -79,6 +80,12 @@ class _PermisosAjustesState extends State<PermisosAjustes>
         'Notificaciones',
         'Activadas',
         'Desactivadas: no recibirás avisos',
+      ),
+      PermisoApp.camara => (
+        Icons.camera_alt_outlined,
+        'Cámara',
+        'Activa: puedes escanear QR y fotografiar residuos',
+        'Desactivada: la necesitas para escanear el QR y fotografiar residuos',
       ),
     };
     return ListTile(

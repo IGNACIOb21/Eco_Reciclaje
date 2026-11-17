@@ -1,6 +1,6 @@
 /// Centro aproximado de cada comuna de la demo, usado para sembrar los puntos
 /// mock y como opciones del filtro de comuna. No es una restricción del
-/// backend — la función RPC `puntos_cercanos` funciona con cualquier comuna.
+/// backend — la función RPC `app_puntos_cercanos` funciona con cualquier comuna.
 class ComunaDemo {
   final String nombre;
   final double lat;

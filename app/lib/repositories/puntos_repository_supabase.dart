@@ -6,10 +6,11 @@ import '../models/punto_reciclaje.dart';
 import '../services/supabase_service.dart';
 import 'puntos_repository.dart';
 
-/// Llama a la RPC `puntos_cercanos` (PostGIS) en vez de traer toda la tabla
+/// Llama a la RPC `app_puntos_cercanos` (PostGIS) en vez de traer toda la tabla
 /// y filtrar en el cliente: el filtrado por comuna/materiales/disponibilidad/
-/// calificación y el radio ya los resuelve la función en Postgres (ver
-/// backend/supabase/migrations/20260908232413_puntos_reciclaje.sql). El
+/// calificación y el radio ya los resuelve la función en Postgres sobre el
+/// esquema remoto, el mismo que edita el panel (ver
+/// backend/remoto/20261010100000_app_puntos_cercanos.sql). El
 /// orden pedido por el usuario (distancia/calificación/nombre) se aplica acá
 /// porque la RPC siempre devuelve ordenado por distancia.
 class PuntosRepositorySupabase implements PuntosRepository {
@@ -25,7 +26,7 @@ class PuntosRepositorySupabase implements PuntosRepository {
     required FiltrosMapa filtros,
   }) async {
     final filas = await _cliente.rpc(
-      'puntos_cercanos',
+      'app_puntos_cercanos',
       params: {
         'p_lat': miLat,
         'p_lng': miLng,
@@ -33,7 +34,7 @@ class PuntosRepositorySupabase implements PuntosRepository {
         'comuna_filtro': filtros.comuna,
         'materiales_filtro': filtros.materiales.isEmpty
             ? null
-            : filtros.materiales.map((m) => m.codigo).nonNulls.toList(),
+            : filtros.materiales.map((m) => m.codigo).toList(),
         'solo_disponibles': filtros.soloDisponibles,
         'calificacion_minima': filtros.calificacionMinima,
       },

@@ -199,7 +199,7 @@ class _RegistroCuentaScreenState extends State<RegistroCuentaScreen> {
       const _Titulo('¿Cuál es tu correo?'),
       const SizedBox(height: 6),
       Text(
-        'Tu cuenta de invitado, con tus puntos y tu actividad, quedará '
+        'Tu cuenta de invitado, con tus Rebin Points y tu actividad, quedará '
         'vinculada a este correo.',
         style: TextStyle(color: colores.textoSecundario, fontSize: 15),
       ),

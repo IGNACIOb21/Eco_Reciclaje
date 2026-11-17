@@ -1,17 +1,15 @@
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart';
 
-import '../models/resultado_clasificacion.dart';
+import 'resultado_escaneo.dart';
 
 /// Lado de la foto que espera el modelo (IMG_SIZE de config.py).
 const int tamanoImagenModelo = 224;
 
-const String _rutaModelo = 'assets/modelo/model.tflite';
-const String _rutaEtiquetas = 'assets/modelo/labels.txt';
+const String _rutaModelo = 'assets/modelo_escaneo/model.tflite';
+const String _rutaEtiquetas = 'assets/modelo_escaneo/labels.txt';
 
 /// Prepara la foto igual que `preparar_foto` de predecir.py: RGB, 224x224
 /// (estirada, sin recortar) y float32 con valores 0..255. NO se normaliza:
@@ -45,17 +43,17 @@ Float32List prepararImagen(Uint8List bytes) {
   return datos;
 }
 
-/// Carga el modelo TFLite y clasifica fotos. Todo ocurre en el teléfono: no
-/// usa internet ni Supabase.
-class Clasificador {
+/// Modelo TFLite de Joaquín (MobileNetV3, 9 clases). Todo ocurre en el
+/// teléfono: no usa internet.
+class ClasificadorEscaneo {
   final Interpreter _interprete;
 
   /// Clases en el orden en que las devuelve el modelo (labels.txt).
   final List<String> clases;
 
-  Clasificador._(this._interprete, this.clases);
+  ClasificadorEscaneo._(this._interprete, this.clases);
 
-  static Future<Clasificador> cargar() async {
+  static Future<ClasificadorEscaneo> cargar() async {
     final interprete = await Interpreter.fromAsset(_rutaModelo);
     try {
       final texto = await rootBundle.loadString(_rutaEtiquetas);
@@ -73,14 +71,14 @@ class Clasificador {
           '${clases.length}. Copia model.tflite y labels.txt juntos.',
         );
       }
-      return Clasificador._(interprete, clases);
+      return ClasificadorEscaneo._(interprete, clases);
     } catch (_) {
       interprete.close();
       rethrow;
     }
   }
 
-  Future<ResultadoClasificacion> clasificar(
+  Future<ResultadoEscaneo> clasificar(
     Uint8List bytesFoto, {
     int top = 3,
   }) async {
@@ -99,9 +97,9 @@ class Clasificador {
       ..sort((a, b) => probs[b].compareTo(probs[a]));
     final mejores = indices
         .take(top)
-        .map((i) => Prediccion(clases[i], probs[i]))
+        .map((i) => PrediccionEscaneo(clases[i], probs[i]))
         .toList();
-    return ResultadoClasificacion(mejores, reloj.elapsedMilliseconds);
+    return ResultadoEscaneo(mejores, reloj.elapsedMilliseconds);
   }
 
   void cerrar() => _interprete.close();

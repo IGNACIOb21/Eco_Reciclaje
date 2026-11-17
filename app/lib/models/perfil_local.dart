@@ -40,7 +40,6 @@ class PerfilLocal {
   final AvatarIcono avatarIcono;
   final int avatarColorIndex;
   final String comuna;
-  final bool modoEco;
   final String? comunidadUnidaId;
 
   const PerfilLocal({
@@ -48,7 +47,6 @@ class PerfilLocal {
     this.avatarIcono = AvatarIcono.persona,
     this.avatarColorIndex = 0,
     this.comuna = 'Ñuñoa',
-    this.modoEco = false,
     this.comunidadUnidaId,
   });
 
@@ -62,7 +60,6 @@ class PerfilLocal {
     AvatarIcono? avatarIcono,
     int? avatarColorIndex,
     String? comuna,
-    bool? modoEco,
     String? comunidadUnidaId,
     bool limpiarComunidad = false,
   }) {
@@ -71,7 +68,6 @@ class PerfilLocal {
       avatarIcono: avatarIcono ?? this.avatarIcono,
       avatarColorIndex: avatarColorIndex ?? this.avatarColorIndex,
       comuna: comuna ?? this.comuna,
-      modoEco: modoEco ?? this.modoEco,
       comunidadUnidaId: limpiarComunidad
           ? null
           : (comunidadUnidaId ?? this.comunidadUnidaId),
@@ -83,7 +79,6 @@ class PerfilLocal {
     'avatarIcono': avatarIcono.name,
     'avatarColorIndex': avatarColorIndex,
     'comuna': comuna,
-    'modoEco': modoEco,
     'comunidadUnidaId': comunidadUnidaId,
   };
 
@@ -95,7 +90,6 @@ class PerfilLocal {
           AvatarIcono.persona,
       avatarColorIndex: json['avatarColorIndex'] as int? ?? 0,
       comuna: json['comuna'] as String? ?? 'Ñuñoa',
-      modoEco: json['modoEco'] as bool? ?? false,
       comunidadUnidaId: json['comunidadUnidaId'] as String?,
     );
   }

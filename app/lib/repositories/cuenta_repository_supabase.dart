@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../services/supabase_service.dart';
@@ -60,12 +61,38 @@ class CuentaRepositorySupabase implements CuentaRepository {
     return respuesta.user!.id;
   }
 
+  @override
+  bool get tieneCorreoVinculado {
+    final usuario = _cliente.auth.currentUser;
+    return usuario != null &&
+        !usuario.isAnonymous &&
+        (usuario.email?.isNotEmpty ?? false);
+  }
+
+  /// signOut solo en este dispositivo (la cuenta sigue abierta en otros) y
+  /// luego una sesión anónima nueva: el trigger handle_new_auth_user le crea
+  /// su fila en `usuarios`.
+  @override
+  Future<String> cerrarSesion() async {
+    await _envolver(() => _cliente.auth.signOut(scope: SignOutScope.local));
+    final respuesta = await _envolver(() => _cliente.auth.signInAnonymously());
+    return respuesta.user!.id;
+  }
+
   Future<T> _envolver<T>(Future<T> Function() accion) async {
     try {
       return await accion();
     } on AuthRetryableFetchException catch (e) {
-      // Va antes que AuthException porque hereda de ella.
-      throw CuentaException(MotivoErrorCuenta.sinConexion, e);
+      // Va antes que AuthException porque hereda de ella. gotrue la usa
+      // tanto para fallas de red (sin statusCode) como para respuestas 5xx
+      // del servidor (ej. no pudo enviar el correo por SMTP).
+      debugPrint('CuentaRepositorySupabase: $e');
+      throw CuentaException(
+        e.statusCode == null
+            ? MotivoErrorCuenta.sinConexion
+            : MotivoErrorCuenta.errorServidor,
+        e,
+      );
     } on AuthException catch (e) {
       throw CuentaException(_motivo(e), e);
     } on SocketException catch (e) {

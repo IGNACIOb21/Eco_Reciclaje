@@ -8,6 +8,20 @@ class CuentaRepositoryMock implements CuentaRepository {
   String? _correo;
   String? _contrasena;
   bool _verificado = false;
+  bool _conCorreo;
+
+  /// [conCorreo] simula una sesión que ya tiene correo vinculado.
+  CuentaRepositoryMock({bool conCorreo = false})
+    : _conCorreo = conCorreo; // ignore: prefer_initializing_formals
+
+  @override
+  bool get tieneCorreoVinculado => _conCorreo;
+
+  @override
+  Future<String> cerrarSesion() async {
+    _conCorreo = false;
+    return 'mock-invitado';
+  }
 
   @override
   Future<void> enviarCodigo(String correo) async {
@@ -35,6 +49,7 @@ class CuentaRepositoryMock implements CuentaRepository {
       throw const CuentaException(MotivoErrorCuenta.desconocido);
     }
     _contrasena = contrasena;
+    _conCorreo = true;
   }
 
   @override
@@ -42,6 +57,7 @@ class CuentaRepositoryMock implements CuentaRepository {
     if (correo.trim() != _correo || contrasena != _contrasena) {
       throw const CuentaException(MotivoErrorCuenta.credencialesInvalidas);
     }
+    _conCorreo = true;
     return 'mock';
   }
 }

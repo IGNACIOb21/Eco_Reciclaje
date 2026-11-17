@@ -49,7 +49,7 @@ class MiembroComunidad {
     this.esUsuarioActual = false,
   });
 
-  Nivel get nivel => NivelInfo.paraPuntos(puntos);
+  Nivel get nivel => Nivel.paraPuntos(puntos);
 }
 
 class AnuncioComunidad {
