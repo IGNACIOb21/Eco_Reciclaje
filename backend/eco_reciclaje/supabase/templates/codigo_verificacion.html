@@ -1,0 +1,15 @@
+<!-- Plantilla "Change Email Address" de Supabase Auth (Eco Reciclaje).
+     La aplica `supabase config push`; también se puede pegar a mano en
+     Authentication → Email Templates → Change Email Address. -->
+<div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; color: #23272B; background: #F4F5F6; padding: 32px 24px; border-radius: 16px;">
+  <h2 style="color: #0A6B23; margin: 0 0 12px;">Verifica tu correo en Eco Reciclaje</h2>
+  <p style="margin: 0 0 20px; line-height: 1.5;">
+    Ingresa este código en la aplicación para vincular <strong>{{ .NewEmail }}</strong> a tu cuenta:
+  </p>
+  <p style="font-size: 32px; font-weight: bold; letter-spacing: 8px; text-align: center; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 12px; padding: 16px 0; margin: 0 0 20px; color: #0A6B23;">
+    {{ .Token }}
+  </p>
+  <p style="margin: 0; font-size: 13px; color: #5D646B; line-height: 1.5;">
+    El código vence en 15 minutos. Si tú no pediste este código, ignora este correo: nadie podrá usar tu dirección sin él.
+  </p>
+</div>
