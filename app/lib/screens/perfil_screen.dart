@@ -34,7 +34,6 @@ import 'para_reclamar_screen.dart';
 import 'iniciar_sesion_screen.dart';
 import 'personalizar_perfil_sheet.dart';
 import 'registro_cuenta_screen.dart';
-import 'tema_sheet.dart';
 
 class PerfilScreen extends StatelessWidget {
   /// Solo para tests: los logros que se muestran como insignias. Por defecto
@@ -65,74 +64,85 @@ class PerfilScreen extends StatelessWidget {
             24 + MediaQuery.paddingOf(context).bottom,
           ),
           children: [
-            InkWell(
-              borderRadius: BorderRadius.circular(28),
-              onTap: () => mostrarPersonalizarPerfil(context),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Column(
-                  children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withValues(alpha: 0.7),
-                            boxShadow: [
-                              BoxShadow(
-                                color: colores.primario.withValues(alpha: 0.28),
-                                blurRadius: 24,
-                                offset: const Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: AvatarUsuario(
-                            icono: local.avatarIcono,
-                            color: local.avatarColor,
-                            tamano: 92,
-                          ),
-                        ),
-                        Positioned(
-                          right: 0,
-                          bottom: 0,
-                          child: Container(
-                            width: 30,
-                            height: 30,
+            // Único acceso a "Personalizar perfil" (nombre, ícono y comuna).
+            Semantics(
+              button: true,
+              label: 'Personalizar perfil',
+              child: InkWell(
+                key: const Key('perfil-personalizar'),
+                borderRadius: BorderRadius.circular(28),
+                onTap: () => mostrarPersonalizarPerfil(context),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Column(
+                    children: [
+                      Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                              color: colores.primario,
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 2),
+                              color: Colors.white.withValues(alpha: 0.7),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: colores.primario.withValues(
+                                    alpha: 0.28,
+                                  ),
+                                  blurRadius: 24,
+                                  offset: const Offset(0, 10),
+                                ),
+                              ],
                             ),
-                            child: Icon(
-                              Icons.edit_outlined,
-                              size: 15,
-                              color: colores.sobrePrimario,
+                            child: AvatarUsuario(
+                              icono: local.avatarIcono,
+                              color: local.avatarColor,
+                              tamano: 92,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      local.nombreVisible,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleLarge
-                          ?.copyWith(fontSize: 24),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      perfil == null
-                          ? local.comuna
-                          : 'Reciclando desde ${perfil.miembroDesde} · ${local.comuna}',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: colores.textoSecundario,
-                        fontSize: 13,
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: colores.primario,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
+                              ),
+                              child: Icon(
+                                Icons.edit_outlined,
+                                size: 15,
+                                color: colores.sobrePrimario,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 12),
+                      Text(
+                        local.nombreVisible,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleLarge
+                            ?.copyWith(fontSize: 24),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        perfil == null
+                            ? local.comuna
+                            : 'Reciclando desde ${perfil.miembroDesde} · ${local.comuna}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: colores.textoSecundario,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -179,36 +189,6 @@ class PerfilScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Column(
               children: [
-                ListTile(
-                  tileColor: colores.superficie.withValues(alpha: 0.78),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  leading: Icon(
-                    Icons.palette_outlined,
-                    color: colores.primario,
-                  ),
-                  title: const Text('Personalizar perfil'),
-                  subtitle: const Text('Nombre visible, ícono y comuna'),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => mostrarPersonalizarPerfil(context),
-                ),
-                const SizedBox(height: 10),
-                ListTile(
-                  tileColor: colores.superficie.withValues(alpha: 0.78),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  leading: Icon(
-                    Icons.color_lens_outlined,
-                    color: colores.primario,
-                  ),
-                  title: const Text('Tema'),
-                  subtitle: Text(TemaScope.of(context).tema.nombre),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => mostrarTema(context),
-                ),
-                const SizedBox(height: 10),
                 ListTile(
                   tileColor: colores.superficie.withValues(alpha: 0.78),
                   shape: RoundedRectangleBorder(

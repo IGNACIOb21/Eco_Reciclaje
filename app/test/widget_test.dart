@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:recircula/theme/app_themes.dart';
 import 'package:recircula/data/comunas_demo.dart';
 import 'package:recircula/data/mock_puntos.dart';
 import 'package:recircula/main.dart';
@@ -280,7 +279,9 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Usuario anónimo'), findsOneWidget);
 
-    await tester.tap(find.text('Personalizar perfil'));
+    // Ajustes ya no repite la opción: se abre desde el avatar.
+    expect(find.text('Personalizar perfil'), findsNothing);
+    await tester.tap(find.byKey(const Key('perfil-personalizar')));
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'Camila');
     await tester.tap(find.text('Guardar'));
@@ -386,40 +387,45 @@ void main() {
     expect(find.text('Reintentar'), findsOneWidget);
   });
 
-  testWidgets(
-    'La app parte en el modo claro y Perfil › Tema lo cambia',
-    (tester) async {
-      await _montarApp(tester);
+  testWidgets('La app parte en el modo claro y el interruptor Modo Eco lo '
+      'cambia', (tester) async {
+    await _montarApp(tester);
 
-      await tester.tap(find.byIcon(Icons.person_outline));
-      await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.person_outline));
+    await tester.pumpAndSettle();
 
-      final tema = find.text('Tema');
-      await tester.scrollUntilVisible(tema, 200);
-      ThemeData temaActual() => Theme.of(tester.element(tema.first));
-      expect(
-        temaActual().scaffoldBackgroundColor,
-        AppTheme.light.scaffoldBackgroundColor,
-      );
-      expect(temaActual().brightness, Brightness.light);
+    final eco = find.byKey(const Key('perfil-modo-eco'));
+    await tester.scrollUntilVisible(eco, 200);
+    ThemeData temaActual() => Theme.of(tester.element(eco));
+    expect(
+      temaActual().scaffoldBackgroundColor,
+      AppTheme.light.scaffoldBackgroundColor,
+    );
+    // Ya no hay selector de temas: solo claro y Eco.
+    expect(find.text('Tema'), findsNothing);
 
-      await tester.tap(tema.first);
-      await tester.pumpAndSettle();
-      for (final t in TemaApp.values) {
-        expect(find.text(t.nombre), findsWidgets);
-      }
+    await tester.tap(eco);
+    await tester.pumpAndSettle();
+    expect(
+      temaActual().scaffoldBackgroundColor,
+      AppTheme.eco.scaffoldBackgroundColor,
+    );
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('tema_app'), 'eco');
 
-      await tester.tap(find.text('Azul Nórdico'));
-      await tester.pumpAndSettle();
+    await tester.tap(eco);
+    await tester.pumpAndSettle();
+    expect(prefs.getString('tema_app'), 'claro');
+  });
 
-      expect(
-        temaActual().scaffoldBackgroundColor,
-        AppThemes.nordicBlueTheme.scaffoldBackgroundColor,
-      );
-      final prefs = await SharedPreferences.getInstance();
-      expect(prefs.getString('tema_app'), 'nordico');
-    },
-  );
+  testWidgets('Quien había elegido un tema que ya no existe vuelve al claro', (
+    tester,
+  ) async {
+    await _montarApp(tester, valoresIniciales: {'tema_app': 'nordico'});
+    final fondo = Theme.of(tester.element(find.byType(Scaffold).first))
+        .scaffoldBackgroundColor;
+    expect(fondo, AppTheme.light.scaffoldBackgroundColor);
+  });
 
   testWidgets('Quien ya había elegido el modo claro lo conserva', (
     tester,

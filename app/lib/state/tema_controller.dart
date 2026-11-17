@@ -17,6 +17,10 @@ class TemaController extends ChangeNotifier {
 
   TemaController._(this._tema);
 
+  /// Temas que se pueden elegir: solo el claro y el Eco (interruptor "Modo
+  /// Eco" en Perfil). Los demás de TemaApp ya no se ofrecen.
+  static const disponibles = {TemaApp.claro, TemaApp.eco};
+
   static Future<TemaController> cargar() async {
     final prefs = await SharedPreferences.getInstance();
     final guardado = TemaApp.desdeNombre(prefs.getString(_clave));
@@ -26,7 +30,10 @@ class TemaController extends ChangeNotifier {
         (antiguo == null
             ? TemaApp.porDefecto
             : (antiguo ? TemaApp.eco : TemaApp.claro));
-    return TemaController._(tema);
+    // Quien había elegido otro tema (Nórdico, Terracota…) vuelve al claro.
+    return TemaController._(
+      disponibles.contains(tema) ? tema : TemaApp.porDefecto,
+    );
   }
 
   TemaApp get tema => _tema;
