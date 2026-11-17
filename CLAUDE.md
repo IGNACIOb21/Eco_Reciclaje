@@ -35,7 +35,7 @@ Proyecto de título: app móvil que identifica de qué material es un objeto a p
 
 ## Notas de ambiente
 
-- Auth se configura con `supabase config push --project-ref shkdlkbhpkbrfxemctdj` desde `backend/eco_reciclaje/` (anónimo activo, OTP 8 dígitos / 900 s, contraseña fuerte). La plantilla de correo con el código necesita SMTP propio (plan gratuito): pendiente.
+- Auth se configura con `supabase config push --project-ref shkdlkbhpkbrfxemctdj` desde `backend/eco_reciclaje/` (anónimo activo, OTP 8 dígitos / 900 s, contraseña fuerte). El correo con el código sale por SMTP de Resend (remitente `no-reply@rebin.lat`); la API key va en `backend/eco_reciclaje/.env` (`SMTP_PASS`, `SMTP_ADMIN_EMAIL`) y hay que cargarla antes del push. `config push` aplica sin preguntar: para comparar usar `supabase config diff`.
 - **F5 en VS Code** (`.vscode/launch.json`): "cuenta anónima nueva" pasa `--dart-define=NUEVA_CUENTA_ANONIMA=true`; "sesión guardada" reutiliza la anterior.
 - Nunca commitear claves de API, la secret key de Supabase ni `google-services.json` — usar `.env`. La app usa solo la publishable key.
 
