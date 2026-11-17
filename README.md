@@ -1,47 +1,44 @@
-# Rebin
+# Eco Reciclaje
 
-App móvil que identifica si un objeto es reciclable a partir de una foto y muestra un mapa comunitario de puntos de reciclaje. Proyecto de título.
+App móvil que identifica de qué material es un objeto a partir de una foto y muestra un mapa de puntos de reciclaje. Proyecto de título.
 
-> `/app` es una copia antigua de la APK (2026-10-07). La versión vigente está en el repo `rebin` (`xenzzz/rebin`).
-
-Contexto detallado: ver [`CLAUDE.md`](CLAUDE.md).
+La app parte del diseño de Rebin (`rebin-main`, último commit `28a427d`), con el escáner y el modelo de Joaquín, conectada a la base **Proyecto_Eco_reciclaje** de Supabase.
 
 ## Estructura
 
 ```
-/app       App móvil Flutter (Android/iOS) — ver app/README.md
-/backend   Supabase: migraciones antiguas, plantillas de Auth, script de importación OSM
-/docs      Documentación de base de datos, RLS e importación OSM
-/design    Mockups de las pantallas de la APK
+/app                    App móvil Flutter (Android/iOS)
+/backend/eco_reciclaje  SQL aplicado en Proyecto_Eco_reciclaje y config de Auth — ver su README
+/backend                (resto) SQL antiguo de Rebin, solo referencia
+/docs                   Documentación de la base anterior (desactualizada)
+/design                 Mockups de las pantallas
 ```
-
-## Requisitos
-
-- Flutter (SDK compatible con Dart 3)
-- Un proyecto Supabase con el SQL de `backend/remoto/` del repo `rebin` aplicado
 
 ## App móvil (`/app`)
 
+Barra inferior: **Inicio** (el mapa, con el saldo y la meta del día) · **Comunidad** · **Escanear** (botón central) · **Servicios** · **Perfil**. Abre directo en el mapa con una sesión anónima; el registro con correo se hace desde Perfil. El tema por defecto es claro, en plomo casi blanco.
+
 ```bash
 cd app
-cp .env.example .env     # completar SUPABASE_URL y SUPABASE_ANON_KEY
+cp .env.example .env     # SUPABASE_URL, SUPABASE_ANON_KEY (publishable key) y MAPBOX_ACCESS_TOKEN (pk.)
 flutter pub get
 flutter run
 ```
 
-Sin `.env` la app funciona igual como demo con repositorios mock. Con Supabase configurado abre una sesión anónima y pide nombre y alias en la bienvenida.
+Sin `.env` la app funciona como demo con repositorios mock. Cambiar `.env` exige recompilar.
 
-En VS Code, F5 ofrece dos configuraciones (`.vscode/launch.json`): **cuenta anónima nueva** (crea una cuenta nueva en cada arranque) y **sesión guardada**.
+- Escáner: `lib/escaneo/` (modelo TFLite de Joaquín en `assets/modelo_escaneo/`, 9 clases) y `lib/screens/escanear_screen.dart`. "Registrar reciclaje" suma Rebin Points con `app_registrar_reciclaje`.
+- APK para un teléfono moderno (arm64): `flutter build apk --release --split-per-abi --target-platform android-arm64`.
 
 Tests: `flutter test`.
 
-## Base de datos (`/backend`)
+## Base de datos
 
-- El esquema real de la nube es el de `docs/esquema-remoto.md` del repo `rebin`. Los cambios para la nube se escriben como SQL en `rebin/backend/remoto/` y los aplica el dueño del proyecto.
-- `backend/supabase/migrations/` describe un esquema **anterior** y solo se conserva porque ya figura en el historial remoto. **No correr `supabase db push` desde `backend/`.**
-- `backend/supabase/templates/codigo_verificacion.html`: correo con el código de 8 dígitos para vincular la cuenta. En la nube hay que configurarlo a mano en Auth, junto con el largo del OTP, la política de contraseñas y el SMTP (detalle en `CLAUDE.md`).
-- `backend/legacy_esquema_repo/` es el esquema antiguo archivado: no aplicarlo.
+Ver [`backend/eco_reciclaje/README.md`](backend/eco_reciclaje/README.md): orden de los SQL, buckets de Storage, Auth y lo que falta (SMTP para el código de registro).
+
+**No correr `supabase db push` desde `backend/`**: esas migraciones son del esquema antiguo de Rebin.
 
 ## Notas
 
-- Nunca commitear `.env`, claves de Supabase ni `google-services.json`.
+- Nunca commitear `.env`, la secret key de Supabase ni `google-services.json`.
+- La app usa solo la publishable key; la secret key es para el panel de administración.
