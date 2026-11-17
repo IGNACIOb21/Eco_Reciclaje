@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fondo mientras arranca: el mismo de la apertura (tema claro), también
+         con el teléfono en modo oscuro, porque la app siempre abre en claro. -->
+    <color name="splash_bg">#D4D9DD</color>
+    <color name="ic_launcher_background">#F6F4EA</color>
+</resources>

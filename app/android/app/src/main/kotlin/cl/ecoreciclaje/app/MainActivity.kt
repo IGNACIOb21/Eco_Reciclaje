@@ -1,4 +1,4 @@
-package com.example.recircula
+package cl.ecoreciclaje.app
 
 import io.flutter.embedding.android.FlutterActivity
 
