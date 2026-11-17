@@ -20,7 +20,7 @@ Proyecto de título: app móvil que identifica de qué material es un objeto a p
 ## App
 
 - Barra: Inicio (mapa con `ResumenInicio` y saldo) · Comunidad (Hoy, Actividad, Ranking, Grupos) · Escanear (botón central → `EscanearScreen`) · Servicios · Perfil.
-- Abre directo en el mapa con sesión anónima: no hay bienvenida ni inicio de sesión al arrancar. El permiso de ubicación se pide una vez sobre el mapa. El registro con correo (código de 8 dígitos + contraseña) está en Perfil.
+- Primer inicio (`BienvenidaScreen`, sobre la sesión anónima): acceso Regístrate / Inicia sesión con "Omitir" arriba → nombre de usuario obligatorio (se salta si se inició sesión) y permisos opcionales de ubicación, cámara y notificaciones en la misma pantalla. Después abre directo en el mapa. El registro con correo (código de 8 dígitos + contraseña) también está en Perfil.
 - Tema por defecto: `TemaApp.claro` (plomo casi blanco, `fondo` `#F1F2F4`).
 - Escáner: `lib/escaneo/` (clases del modelo → `categoria_residuo.codigo` en `info_clase.dart`).
 - Ocultos porque la base no los soporta: sugerir/confirmar puntos, misiones, sorpresa diaria, congeladores, flujo de depósito con QR (`flujo_reciclaje_screen.dart` sigue en el código pero no se abre).

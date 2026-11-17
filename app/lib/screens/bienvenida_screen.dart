@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../models/perfil_local.dart';
 import '../repositories/cuenta_repository.dart';
 import '../services/permisos_service.dart';
 import '../state/perfil_local_controller.dart';
@@ -9,18 +8,15 @@ import '../state/usuario_controller.dart';
 import '../theme/app_theme.dart';
 import '../widgets/indicador_pasos.dart';
 import 'iniciar_sesion_screen.dart';
-import 'onboarding_screen.dart';
 
-/// Primer inicio tras instalar la app. Parte con las 3 láminas de
-/// presentación (una sola vez; el avatar que se elige ahí queda en el perfil
-/// local) y sigue en el acceso (registro / inicio de sesión) con "Omitir"
-/// para seguir como invitado:
-/// - Omitir o crear cuenta → alias (obligatorio) y nombre (opcional).
-/// - Iniciar sesión → la cuenta ya tiene alias, se salta ese paso.
-/// Luego, si nunca se le mostraron, los permisos de ubicación y
-/// notificaciones (se pueden rechazar; quedan en Perfil › Ajustes). Al
-/// terminar marca el primer inicio como completado y la app entra al MainShell
-/// para no volver a pasar por aquí, ni al cerrar o iniciar sesión.
+/// Primer inicio tras instalar la app, en dos pantallas:
+/// 1. Acceso: "Regístrate" / "Inicia sesión", con "Omitir" arriba para
+///    seguir como invitado.
+/// 2. Datos y permisos: nombre de usuario (obligatorio; se salta si se inició
+///    sesión con una cuenta que ya lo tiene) y los permisos de ubicación,
+///    cámara y notificaciones, todos opcionales (quedan en Perfil › Ajustes).
+/// Al terminar marca el primer inicio como completado y la app entra al
+/// MainShell; no se vuelve a pasar por aquí, ni al cerrar o iniciar sesión.
 class BienvenidaScreen extends StatefulWidget {
   final PermisosService permisos;
 
@@ -37,185 +33,146 @@ class BienvenidaScreen extends StatefulWidget {
   State<BienvenidaScreen> createState() => _BienvenidaScreenState();
 }
 
-enum _Paso { datos, ubicacion, notificaciones }
-
 class _BienvenidaScreenState extends State<BienvenidaScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _nombre = TextEditingController();
   final _alias = TextEditingController();
 
-  /// Pasos que quedan después del acceso; vacío mientras se está en él.
-  List<_Paso> _pasos = const [];
-  int _indice = 0;
+  /// null mientras se está en el acceso; luego indica si se pide el alias.
+  bool? _pedirAlias;
   bool _guardando = false;
 
   @override
   void dispose() {
-    _nombre.dispose();
     _alias.dispose();
     super.dispose();
   }
 
-  void _salirDelAcceso({required bool pedirDatos}) {
-    final permisosPendientes = !PrimerInicioScope.of(context)
-        .permisosSolicitados;
-    final pasos = [
-      if (pedirDatos) _Paso.datos,
-      if (permisosPendientes) ...[_Paso.ubicacion, _Paso.notificaciones],
-    ];
-    if (pasos.isEmpty) {
-      _terminar();
-      return;
-    }
-    setState(() {
-      _pasos = pasos;
-      _indice = 0;
-    });
-    _alEntrarAPaso();
+  void _salirDelAcceso({required bool pedirAlias}) {
+    // Los permisos se marcan como mostrados al entrar: aunque la app se
+    // cierre a mitad de camino, el mapa no los vuelve a pedir solo.
+    PrimerInicioScope.of(context).marcarPermisosSolicitados();
+    setState(() => _pedirAlias = pedirAlias);
   }
 
-  void _siguiente() {
-    if (_indice + 1 >= _pasos.length) {
-      _terminar();
-      return;
-    }
-    setState(() => _indice++);
-    _alEntrarAPaso();
-  }
-
-  /// Los permisos se marcan como solicitados apenas se muestran: aunque la
-  /// app se cierre a mitad de camino, no se vuelven a pedir solos.
-  void _alEntrarAPaso() {
-    if (_pasos[_indice] == _Paso.ubicacion) {
-      PrimerInicioScope.of(context).marcarPermisosSolicitados();
-    }
-  }
-
-  void _atras() {
-    setState(() {
-      if (_indice > 0) {
-        _indice--;
-      } else {
-        _pasos = const [];
-      }
-    });
-  }
-
-  Future<void> _guardarDatos() async {
-    if (!_formKey.currentState!.validate()) return;
-    FocusScope.of(context).unfocus();
-    setState(() => _guardando = true);
-    final alias = _alias.text.trim();
-    final nombre = _nombre.text.trim();
-    final perfilLocal = PerfilLocalScope.of(context);
-    final usuario = UsuarioScope.of(context);
-    // El alias es el nombre visible de la app (saludo de Inicio, Perfil) y se
-    // guarda primero en el teléfono: el perfil de invitado no depende de la
-    // red. En Supabase se guarda si se puede; si falla (sin conexión o sin
-    // las policies RLS) la app sigue igual con el alias local.
-    await perfilLocal.actualizar(perfilLocal.perfil.copyWith(nombre: alias));
-    try {
-      await usuario.guardarDatos(
-        alias: alias,
-        nombre: nombre.isEmpty ? null : nombre,
-      );
-    } catch (e) {
-      debugPrint('Bienvenida: no se pudieron guardar los datos remotos ($e)');
-    }
-    if (!mounted) return;
-    setState(() => _guardando = false);
-    _siguiente();
-  }
-
-  Future<void> _terminar() => PrimerInicioScope.of(context).completar();
-
-  /// Guarda el avatar elegido en las láminas y pasa al acceso.
-  Future<void> _terminarOnboarding(AvatarIcono icono, int color) async {
-    final perfilLocal = PerfilLocalScope.of(context);
+  Future<void> _empezar() async {
     final primerInicio = PrimerInicioScope.of(context);
-    await perfilLocal.actualizar(
-      perfilLocal.perfil.copyWith(avatarIcono: icono, avatarColorIndex: color),
-    );
-    await primerInicio.marcarOnboardingVisto();
+    if (_pedirAlias == true) {
+      if (!_formKey.currentState!.validate()) return;
+      FocusScope.of(context).unfocus();
+      setState(() => _guardando = true);
+      final alias = _alias.text.trim();
+      final perfilLocal = PerfilLocalScope.of(context);
+      final usuario = UsuarioScope.of(context);
+      // El alias se guarda primero en el teléfono (saludo de Inicio, Perfil):
+      // así el invitado no depende de la red. En Supabase se guarda si se
+      // puede; si falla, la app sigue con el alias local.
+      await perfilLocal.actualizar(perfilLocal.perfil.copyWith(nombre: alias));
+      try {
+        await usuario.guardarDatos(alias: alias);
+      } catch (e) {
+        debugPrint('Bienvenida: no se pudo guardar el alias remoto ($e)');
+      }
+      if (!mounted) return;
+      setState(() => _guardando = false);
+    }
+    await primerInicio.completar();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!PrimerInicioScope.of(context).onboardingVisto) {
-      return OnboardingScreen(onTerminar: _terminarOnboarding);
-    }
-    if (_pasos.isEmpty) {
+    final pedirAlias = _pedirAlias;
+    if (pedirAlias == null) {
       return IniciarSesionScreen(
         repositorio: widget.cuentaRepositorio,
-        onOmitir: () => _salirDelAcceso(pedirDatos: true),
+        onOmitir: () => _salirDelAcceso(pedirAlias: true),
         onListo: (resultado) => _salirDelAcceso(
-          pedirDatos: resultado == ResultadoAcceso.cuentaCreada,
+          pedirAlias: resultado == ResultadoAcceso.cuentaCreada,
         ),
       );
     }
 
-    final paso = _pasos[_indice];
-    final ultimo = _indice == _pasos.length - 1;
+    final colores = context.colores;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) _atras();
+        if (!didPop) setState(() => _pedirAlias = null);
       },
       child: Scaffold(
+        backgroundColor: colores.fondo,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
               children: [
-                if (_pasos.length > 1) ...[
-                  IndicadorPasos(paso: _indice, total: _pasos.length),
-                  const SizedBox(height: 24),
+                Icon(Icons.recycling, size: 48, color: colores.primario),
+                const SizedBox(height: 16),
+                const Text(
+                  '¡Bienvenido a Eco Reciclaje!',
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24),
+                ),
+                if (pedirAlias) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    'Elige cómo te verán los demás.',
+                    style: TextStyle(
+                      color: colores.textoSecundario,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  _CampoAlias(
+                    controller: _alias,
+                    onEnviar: _guardando ? null : _empezar,
+                  ),
                 ],
-                Expanded(
-                  child: switch (paso) {
-                    _Paso.datos => _PasoDatos(
-                      formKey: _formKey,
-                      nombre: _nombre,
-                      alias: _alias,
-                      ocupado: _guardando,
-                      textoBoton: ultimo ? 'Empezar' : 'Continuar',
-                      onContinuar: _guardarDatos,
-                    ),
-                    _Paso.ubicacion => _PasoPermiso(
-                      key: const ValueKey('permiso-ubicacion'),
-                      permisos: widget.permisos,
-                      permiso: PermisoApp.ubicacion,
-                      icono: Icons.my_location,
-                      titulo: 'Activa tu ubicación',
-                      texto:
-                          'Rebin usa tu ubicación en tiempo real para '
-                          'mostrarte los puntos de reciclaje más cercanos y '
-                          'guiarte hasta ellos. Sin este permiso el mapa no '
-                          'puede ubicarte.',
-                      textoRechazo:
-                          'Sin ubicación el mapa no sabrá dónde estás. '
-                          'Puedes activarla cuando quieras en Perfil › '
-                          'Ajustes.',
-                      onSiguiente: _siguiente,
-                    ),
-                    _Paso.notificaciones => _PasoPermiso(
-                      key: const ValueKey('permiso-notificaciones'),
-                      permisos: widget.permisos,
-                      permiso: PermisoApp.notificaciones,
-                      icono: Icons.notifications_active_outlined,
-                      titulo: 'Recibe avisos',
-                      texto:
-                          'Te avisaremos de eventos de reciclaje en tu '
-                          'comuna, novedades de tu comunidad y cuando subas '
-                          'de nivel.',
-                      textoRechazo:
-                          'No recibirás ninguna notificación. Puedes '
-                          'activarlas cuando quieras en Perfil › Ajustes.',
-                      textoFinal: 'Empezar',
-                      onSiguiente: _siguiente,
-                    ),
-                  },
+                const SizedBox(height: 28),
+                const Text(
+                  'Permisos',
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Son opcionales. Puedes cambiarlos cuando quieras en '
+                  'Perfil › Ajustes.',
+                  style: TextStyle(color: colores.textoSecundario, fontSize: 14),
+                ),
+                const SizedBox(height: 12),
+                _FilaPermiso(
+                  key: const ValueKey('permiso-ubicacion'),
+                  permisos: widget.permisos,
+                  permiso: PermisoApp.ubicacion,
+                  icono: Icons.map_outlined,
+                  titulo: 'Ubicación',
+                  texto: 'Para mostrarte en el mapa los puntos de reciclaje '
+                      'más cercanos.',
+                ),
+                _FilaPermiso(
+                  key: const ValueKey('permiso-camara'),
+                  permisos: widget.permisos,
+                  permiso: PermisoApp.camara,
+                  icono: Icons.photo_camera_outlined,
+                  titulo: 'Cámara',
+                  texto: 'Para escanear tus residuos y saber de qué material '
+                      'son.',
+                ),
+                _FilaPermiso(
+                  key: const ValueKey('permiso-notificaciones'),
+                  permisos: widget.permisos,
+                  permiso: PermisoApp.notificaciones,
+                  icono: Icons.notifications_active_outlined,
+                  titulo: 'Notificaciones',
+                  texto: 'Para avisarte de novedades de tu comunidad y cuando '
+                      'subas de nivel.',
+                ),
+                const SizedBox(height: 28),
+                FilledButton(
+                  onPressed: _guardando ? null : _empezar,
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size.fromHeight(52),
+                    shape: const StadiumBorder(),
+                  ),
+                  child: TextoBoton(texto: 'Empezar', ocupado: _guardando),
                 ),
               ],
             ),
@@ -226,125 +183,68 @@ class _BienvenidaScreenState extends State<BienvenidaScreen> {
   }
 }
 
-class _PasoDatos extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
-  final TextEditingController nombre;
-  final TextEditingController alias;
-  final bool ocupado;
-  final String textoBoton;
-  final VoidCallback onContinuar;
+class _CampoAlias extends StatelessWidget {
+  final TextEditingController controller;
+  final VoidCallback? onEnviar;
 
-  const _PasoDatos({
-    required this.formKey,
-    required this.nombre,
-    required this.alias,
-    required this.ocupado,
-    required this.textoBoton,
-    required this.onContinuar,
-  });
+  const _CampoAlias({required this.controller, required this.onEnviar});
 
   static final _aliasValido = RegExp(r'^[A-Za-z0-9_.]+$');
 
   @override
   Widget build(BuildContext context) {
-    final colores = context.colores;
-    return Form(
-      key: formKey,
-      child: ListView(
-        children: [
-          Icon(Icons.recycling, size: 48, color: colores.primario),
-          const SizedBox(height: 16),
-          const Text(
-            '¡Bienvenido a Rebin!',
-            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            'Elige cómo te verán los demás en Rebin.',
-            style: TextStyle(color: colores.textoSecundario, fontSize: 15),
-          ),
-          const SizedBox(height: 28),
-          TextFormField(
-            controller: alias,
-            maxLength: 30,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              labelText: 'Alias',
-              hintText: 'Ej. cami_recicla',
-              helperText: 'Así te verán los demás en Rebin',
-              counterText: '',
-            ),
-            validator: (valor) {
-              final v = valor?.trim() ?? '';
-              if (v.isEmpty) return 'Elige un alias';
-              if (v.length < 2) return 'Debe tener al menos 2 caracteres';
-              if (!_aliasValido.hasMatch(v)) {
-                return 'Solo letras, números, punto y guion bajo';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 16),
-          TextFormField(
-            controller: nombre,
-            maxLength: 60,
-            textCapitalization: TextCapitalization.words,
-            textInputAction: TextInputAction.done,
-            onFieldSubmitted: (_) => ocupado ? null : onContinuar(),
-            decoration: const InputDecoration(
-              labelText: 'Nombre (opcional)',
-              hintText: 'Ej. Camila Rojas',
-              counterText: '',
-            ),
-            validator: (valor) {
-              final v = valor?.trim() ?? '';
-              if (v.isNotEmpty && v.length < 2) {
-                return 'Debe tener al menos 2 letras';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 28),
-          FilledButton(
-            onPressed: ocupado ? null : onContinuar,
-            child: TextoBoton(texto: textoBoton, ocupado: ocupado),
-          ),
-        ],
+    return TextFormField(
+      controller: controller,
+      maxLength: 30,
+      autocorrect: false,
+      textInputAction: TextInputAction.done,
+      onFieldSubmitted: (_) => onEnviar?.call(),
+      decoration: const InputDecoration(
+        labelText: 'Nombre de usuario',
+        hintText: 'Ej. cami_recicla',
+        helperText: 'Obligatorio. Así te verán en la comunidad.',
+        counterText: '',
       ),
+      validator: (valor) {
+        final v = valor?.trim() ?? '';
+        if (v.isEmpty) return 'Elige un nombre de usuario';
+        // La base exige entre 3 y 30 caracteres (app_guardar_alias).
+        if (v.length < 3) return 'Debe tener al menos 3 caracteres';
+        if (!_aliasValido.hasMatch(v)) {
+          return 'Solo letras, números, punto y guion bajo';
+        }
+        return null;
+      },
     );
   }
 }
 
-class _PasoPermiso extends StatefulWidget {
+/// Un permiso opcional: explica para qué sirve y muestra "Permitir" o, si ya
+/// está concedido, un check. Si Android lo bloqueó (dos rechazos), el botón
+/// abre los ajustes del teléfono.
+class _FilaPermiso extends StatefulWidget {
   final PermisosService permisos;
   final PermisoApp permiso;
   final IconData icono;
   final String titulo;
   final String texto;
-  final String textoRechazo;
-  final String textoFinal;
-  final VoidCallback onSiguiente;
 
-  const _PasoPermiso({
+  const _FilaPermiso({
     super.key,
     required this.permisos,
     required this.permiso,
     required this.icono,
     required this.titulo,
     required this.texto,
-    required this.textoRechazo,
-    required this.onSiguiente,
-    this.textoFinal = 'Continuar',
   });
 
   @override
-  State<_PasoPermiso> createState() => _PasoPermisoState();
+  State<_FilaPermiso> createState() => _FilaPermisoState();
 }
 
-class _PasoPermisoState extends State<_PasoPermiso> {
+class _FilaPermisoState extends State<_FilaPermiso> {
   EstadoPermiso? _estado;
   bool _pidiendo = false;
-  bool _yaPedido = false;
 
   @override
   void initState() {
@@ -361,89 +261,72 @@ class _PasoPermisoState extends State<_PasoPermiso> {
     setState(() {
       _estado = estado;
       _pidiendo = false;
-      _yaPedido = true;
     });
-    if (estado == EstadoPermiso.concedido) widget.onSiguiente();
   }
 
   @override
   Widget build(BuildContext context) {
     final colores = context.colores;
     final concedido = _estado == EstadoPermiso.concedido;
-    // Si ya estaba bloqueado o se rechazó el diálogo, se explica qué implica
-    // seguir sin el permiso.
-    final rechazado =
-        !concedido && (_yaPedido || _estado == EstadoPermiso.bloqueado);
-    final ocupado = _pidiendo;
-
-    return ListView(
-      children: [
-        Container(
-          width: 88,
-          height: 88,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: colores.primario.withValues(alpha: 0.14),
-            shape: BoxShape.circle,
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: colores.superficie,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: colores.borde),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: colores.primario.withValues(alpha: 0.14),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(widget.icono, color: colores.primario),
           ),
-          child: Icon(widget.icono, size: 40, color: colores.primario),
-        ),
-        const SizedBox(height: 20),
-        Text(
-          widget.titulo,
-          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 24),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          widget.texto,
-          style: TextStyle(color: colores.textoSecundario, fontSize: 15),
-        ),
-        if (concedido) ...[
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Icon(Icons.check_circle, color: colores.primario, size: 20),
-              const SizedBox(width: 8),
-              const Text(
-                'Permiso concedido',
-                style: TextStyle(fontWeight: FontWeight.w600),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.titulo,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  widget.texto,
+                  style: TextStyle(
+                    color: colores.textoSecundario,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          if (concedido)
+            Icon(
+              Icons.check_circle,
+              color: colores.primario,
+              semanticLabel: 'Permitido',
+            )
+          else
+            TextButton(
+              onPressed: _pidiendo ? null : _pedir,
+              child: Text(
+                _estado == EstadoPermiso.bloqueado ? 'Ajustes' : 'Permitir',
               ),
-            ],
-          ),
-        ] else if (rechazado) ...[
-          const SizedBox(height: 16),
-          Text(
-            widget.textoRechazo,
-            style: TextStyle(color: colores.textoSecundario, fontSize: 13),
-          ),
-        ],
-        const SizedBox(height: 28),
-        if (concedido)
-          FilledButton(
-            onPressed: ocupado ? null : widget.onSiguiente,
-            child: TextoBoton(texto: widget.textoFinal, ocupado: ocupado),
-          )
-        else ...[
-          FilledButton(
-            onPressed: ocupado ? null : _pedir,
-            child: TextoBoton(
-              texto: _estado == EstadoPermiso.bloqueado
-                  ? 'Abrir ajustes del teléfono'
-                  : 'Permitir',
-              ocupado: ocupado,
             ),
-          ),
-          const SizedBox(height: 8),
-          TextButton(
-            onPressed: ocupado ? null : widget.onSiguiente,
-            child: Text(
-              widget.textoFinal == 'Continuar'
-                  ? 'Ahora no'
-                  : 'Ahora no, ${widget.textoFinal.toLowerCase()}',
-            ),
-          ),
         ],
-      ],
+      ),
     );
   }
 }

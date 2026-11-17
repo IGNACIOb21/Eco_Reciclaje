@@ -510,20 +510,59 @@ void main() {
   });
 
   testWidgets(
-    'Primer inicio: abre directo en el mapa, sin bienvenida ni inicio de sesión',
+    'Primer inicio: acceso con Omitir, nombre de usuario obligatorio y '
+    'permisos opcionales',
     (tester) async {
-      await _montarApp(tester, primerInicioCompletado: false);
+      final repo = _UsuarioRepositoryFijo(0);
+      await _montarApp(
+        tester,
+        primerInicioCompletado: false,
+        usuarioRepository: repo,
+      );
 
-      expect(find.text('Inicia sesión'), findsNothing);
-      expect(find.text('Omitir'), findsNothing);
+      // 1. Acceso: registrarse o iniciar sesión, con Omitir arriba.
+      expect(find.text('Regístrate'), findsOneWidget);
+      expect(find.text('Inicia sesión'), findsOneWidget);
+      expect(find.text('Cerca de ti'), findsNothing);
+      await tester.tap(find.text('Omitir'));
+      await tester.pumpAndSettle();
+
+      // 2. Nombre de usuario y los tres permisos en la misma pantalla.
+      expect(find.text('Nombre de usuario'), findsOneWidget);
+      expect(find.text('Ubicación'), findsOneWidget);
+      expect(find.text('Cámara'), findsOneWidget);
+      expect(find.text('Notificaciones'), findsOneWidget);
+      expect(find.text('Permitir'), findsNWidgets(3));
+
+      // Sin nombre de usuario no avanza.
+      final empezar = find.widgetWithText(FilledButton, 'Empezar');
+      await tester.ensureVisible(empezar);
+      await tester.tap(empezar);
+      await tester.pumpAndSettle();
+      expect(find.text('Elige un nombre de usuario'), findsOneWidget);
+      expect(find.text('Cerca de ti'), findsNothing);
+
+      // Con nombre entra al mapa sin haber dado permisos.
+      await tester.enterText(find.byType(TextFormField), 'cami_recicla');
+      await tester.ensureVisible(empezar);
+      await tester.tap(empezar);
+      await tester.pumpAndSettle();
       expect(find.text('Cerca de ti'), findsOneWidget);
+      expect(repo.alias, 'cami_recicla');
 
-      // El permiso de ubicación se pide una sola vez, sobre el mapa.
       final prefs = await SharedPreferences.getInstance();
       expect(prefs.getBool('permisos_solicitados'), isTrue);
       expect(prefs.getBool('primer_inicio_completado'), isTrue);
     },
   );
+
+  testWidgets('Con el primer inicio completado abre directo en el mapa', (
+    tester,
+  ) async {
+    await _montarApp(tester);
+    expect(find.text('Omitir'), findsNothing);
+    expect(find.text('Cerca de ti'), findsOneWidget);
+  });
 
   testWidgets(
     'Iniciar sesión en el primer inicio salta el alias y va a los permisos',
@@ -564,8 +603,10 @@ void main() {
       await tester.tap(find.widgetWithText(FilledButton, 'Iniciar sesión'));
       await tester.pumpAndSettle();
 
-      expect(find.text('¡Bienvenido a Rebin!'), findsNothing);
-      expect(find.text('Activa tu ubicación'), findsOneWidget);
+      // La cuenta ya tiene nombre de usuario: solo quedan los permisos.
+      expect(find.text('Nombre de usuario'), findsNothing);
+      expect(find.text('Permisos'), findsOneWidget);
+      expect(find.text('Permitir'), findsNWidgets(3));
     },
   );
 
@@ -590,8 +631,8 @@ void main() {
 
       expect(find.text('Cerraste sesión'), findsOneWidget);
       expect(find.text('Omitir'), findsNothing);
-      expect(find.text('¡Bienvenido a Rebin!'), findsNothing);
-      expect(find.text('Activa tu ubicación'), findsNothing);
+      expect(find.text('Nombre de usuario'), findsNothing);
+      expect(find.text('Permisos'), findsNothing);
       // Vuelve a la pestaña Inicio.
       expect(find.text('Cerca de ti'), findsOneWidget);
     },
