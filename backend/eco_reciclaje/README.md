@@ -16,6 +16,8 @@ Todos son idempotentes (se pueden volver a correr). Ya están aplicados en la nu
 | `05_inicio.sql` | `app_resumen_hoy`: meta del día (3 objetos) y racha, para la cabecera del mapa. |
 | `06_logros.sql` | Insignias sobre `logro` y `logro_usuario` (columnas `codigo`, `metrica`, `puntos_recompensa`). |
 | `07_comunidad_comuna.sql` | Pestañas Hoy, Actividad y Ranking de Comunidad (`usuario.comuna`, `usuario.oculto_ranking`). |
+| `08_seed_beneficios_servicios.sql` | Datos de ejemplo: 6 beneficios y 6 servicios de recolectores (ficticios). |
+| `09_seguridad.sql` | Quita `_racha` a `authenticated`, bloquea el beneficio al canjear y al usuario al calificar, y revoca la escritura directa en tablas. |
 
 Para aplicarlos con la CLI (sesión iniciada con `supabase login`), usando rutas absolutas:
 

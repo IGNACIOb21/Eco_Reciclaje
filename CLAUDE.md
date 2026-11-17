@@ -6,7 +6,7 @@ Proyecto de título: app móvil que identifica de qué material es un objeto a p
 
 ```
 /app                    APK Flutter
-/backend/eco_reciclaje  SQL aplicado en Proyecto_Eco_reciclaje (00..07), pruebas y config.toml de Auth
+/backend/eco_reciclaje  SQL aplicado en Proyecto_Eco_reciclaje (00..09), pruebas y config.toml de Auth
 /backend                (resto) SQL antiguo de Rebin: solo referencia
 /docs                   Definición de BD de Rebin (desactualizada)
 /design/mockup          mockups PNG de las pantallas
