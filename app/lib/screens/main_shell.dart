@@ -126,10 +126,10 @@ class _MainShellState extends State<MainShell> with RouteAware {
     });
   }
 
-  /// Sin pantalla de bienvenida, el permiso de ubicación se pide una sola vez,
-  /// sobre el mapa, la primera vez que se abre la app. Después se activa desde
-  /// Perfil › Ajustes. Al volver del diálogo el mapa retoma el GPS solo (ver
-  /// MapaScreen.didChangeAppLifecycleState).
+  /// Respaldo: los permisos se muestran en la bienvenida. Si por algún motivo
+  /// nunca se mostraron, el de ubicación se pide una sola vez sobre el mapa.
+  /// Después se activa desde Perfil › Ajustes. Al volver del diálogo el mapa
+  /// retoma el GPS solo (ver MapaScreen.didChangeAppLifecycleState).
   Future<void> _pedirUbicacionLaPrimeraVez() async {
     final primerInicio = context
         .getInheritedWidgetOfExactType<PrimerInicioScope>()

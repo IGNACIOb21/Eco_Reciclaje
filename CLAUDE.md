@@ -20,7 +20,7 @@ Proyecto de título: app móvil que identifica de qué material es un objeto a p
 ## App
 
 - Barra: Inicio (mapa con `ResumenInicio` y saldo) · Comunidad (Hoy, Actividad, Ranking, Grupos) · Escanear (botón central → `EscanearScreen`) · Servicios · Perfil.
-- Abre directo en el mapa con sesión anónima: no hay bienvenida ni inicio de sesión al arrancar. El permiso de ubicación se pide una vez sobre el mapa. El registro con correo (código de 8 dígitos + contraseña) está en Perfil.
+- Primer inicio (`BienvenidaScreen`, sobre la sesión anónima): acceso Regístrate / Inicia sesión con "Omitir" arriba → nombre de usuario obligatorio (se salta si se inició sesión) y permisos opcionales de ubicación, cámara y notificaciones en la misma pantalla. Después abre directo en el mapa. El registro con correo (código de 8 dígitos + contraseña) también está en Perfil.
 - Tema por defecto: `TemaApp.claro` (plomo casi blanco, `fondo` `#F1F2F4`).
 - Escáner: `lib/escaneo/` (clases del modelo → `categoria_residuo.codigo` en `info_clase.dart`).
 - Ocultos porque la base no los soporta: sugerir/confirmar puntos, misiones, sorpresa diaria, congeladores, flujo de depósito con QR (`flujo_reciclaje_screen.dart` sigue en el código pero no se abre).
@@ -35,7 +35,7 @@ Proyecto de título: app móvil que identifica de qué material es un objeto a p
 
 ## Notas de ambiente
 
-- Auth se configura con `supabase config push --project-ref shkdlkbhpkbrfxemctdj` desde `backend/eco_reciclaje/` (anónimo activo, OTP 8 dígitos / 900 s, contraseña fuerte). La plantilla de correo con el código necesita SMTP propio (plan gratuito): pendiente.
+- Auth se configura con `supabase config push --project-ref shkdlkbhpkbrfxemctdj` desde `backend/eco_reciclaje/` (anónimo activo, OTP 8 dígitos / 900 s, contraseña fuerte). El correo con el código sale por SMTP de Resend (remitente `no-reply@rebin.lat`); la API key va en `backend/eco_reciclaje/.env` (`SMTP_PASS`, `SMTP_ADMIN_EMAIL`) y hay que cargarla antes del push. `config push` aplica sin preguntar: para comparar usar `supabase config diff`.
 - **F5 en VS Code** (`.vscode/launch.json`): "cuenta anónima nueva" pasa `--dart-define=NUEVA_CUENTA_ANONIMA=true`; "sesión guardada" reutiliza la anterior.
 - Nunca commitear claves de API, la secret key de Supabase ni `google-services.json` — usar `.env`. La app usa solo la publishable key.
 

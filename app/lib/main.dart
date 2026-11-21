@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'repositories/puntos_repository.dart';
 import 'repositories/usuario_repository_mock.dart';
 import 'repositories/usuario_repository_supabase.dart';
+import 'screens/bienvenida_screen.dart';
 import 'screens/main_shell.dart';
 import 'services/haptica.dart';
 import 'services/supabase_service.dart';
@@ -108,7 +109,7 @@ class RecirculaApp extends StatelessWidget {
               listenable: tema,
               builder: (context, _) {
                 return MaterialApp(
-                  title: 'Eco Reciclaje',
+                  title: 'Revin',
                   debugShowCheckedModeBanner: false,
                   theme: tema.tema.datos,
                   navigatorObservers: [observadorRutas],
@@ -135,11 +136,11 @@ class RecirculaApp extends StatelessWidget {
   }
 }
 
-/// La app abre directo en el mapa (Inicio) con la sesión anónima: no hay
-/// pantalla de bienvenida ni de inicio de sesión. El registro con correo se
-/// hace después, desde Perfil. Iniciar o cerrar sesión cambia la clave del
-/// perfil local y el MainShell se reconstruye desde Inicio con la cuenta
-/// nueva.
+/// La primera vez tras instalar abre la bienvenida (acceso con "Omitir",
+/// nombre de usuario y permisos opcionales) sobre la sesión anónima. Desde
+/// ahí abre directo en el mapa (Inicio). Iniciar o cerrar sesión cambia la
+/// clave del perfil local y el MainShell se reconstruye desde Inicio con la
+/// cuenta nueva.
 class _PuertaEntrada extends StatelessWidget {
   final PuntosRepository? puntosRepository;
 
@@ -147,6 +148,9 @@ class _PuertaEntrada extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!PrimerInicioScope.of(context).completado) {
+      return const BienvenidaScreen();
+    }
     return MainShell(
       key: ValueKey(PerfilLocalScope.of(context).clave),
       puntosRepository: puntosRepository,

@@ -5,7 +5,7 @@
     <!-- Android 13+: sin este permiso no se muestra ninguna notificación. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
-        android:label="Eco Reciclaje"
+        android:label="Revin"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
