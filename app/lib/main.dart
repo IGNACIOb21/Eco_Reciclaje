@@ -109,7 +109,7 @@ class RecirculaApp extends StatelessWidget {
               listenable: tema,
               builder: (context, _) {
                 return MaterialApp(
-                  title: 'Eco Reciclaje',
+                  title: 'Revin',
                   debugShowCheckedModeBanner: false,
                   theme: tema.tema.datos,
                   navigatorObservers: [observadorRutas],
